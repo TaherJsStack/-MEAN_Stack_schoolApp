@@ -1,0 +1,29 @@
+.img-form-field {
+  background-color: #f5f5dc7a;
+  height: 160px;
+  border-radius: 4px;
+  padding: 25px 25px;
+}
+.img-form-field button {
+  float: left;
+  margin-top: 13%;
+}
+.img-form-field input {
+  visibility: hidden;
+  display: none;
+}
+.img-form-field .img-review {
+  float: right;
+  max-width: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 139, 139, 0.5);
+  margin-right: 10px;
+}
+.img-form-field .img-review img {
+  max-width: 100%;
+}
+mat-slide-toggle {
+  float: left !important;
+  display: block;
+}

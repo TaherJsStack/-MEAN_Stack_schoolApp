@@ -1,0 +1,196 @@
+<section class="add-bus background-color">
+  <h1 class="text-center">add new bus </h1> 
+  <!-- <span *ngIf="reload"></span> -->
+  <!-- <div class="row"> -->
+    <!-- <div class="col-md-12"> -->
+      <div class="form card">
+        <form (ngSubmit)="onSave(busForm)" #busForm="ngForm">
+          <div class="row">
+            <div class="col-md-2">
+              <mat-form-field>
+                <input
+                  [ngModel]="class?.area"
+                  matInput
+                  required
+                  name="area"
+                  #catname='ngModel'
+                  placeholder=" area name">
+                  <mat-error *ngIf="busForm.invalid"> please enter area name </mat-error>
+              </mat-form-field>              
+            </div>
+
+            <div class="col-md-2">
+              <mat-form-field>
+                <mat-select
+                  [ngModel]="class?.city"
+                  matInput
+                  required
+                  name="city"
+                  placeholder="select city">
+                  <mat-option
+                    *ngFor="let city of cites"
+                    value="{{city}}">{{ city }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <mat-form-field>
+                <input
+                  [ngModel]="class?.busNo"
+                  matInput
+                  required
+                  name="busNo"
+                  #catname='ngModel'
+                  placeholder=" bus No">
+                  <mat-error *ngIf="busForm.invalid"> please enter bus No </mat-error>
+              </mat-form-field>              
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-2">
+              <mat-form-field>
+                <input
+                  [ngModel]="class?.supervisor"
+                  matInput
+                  required
+                  name="supervisor"
+                  #catname='ngModel'
+                  placeholder=" super visor">
+                  <mat-error *ngIf="busForm.invalid"> please enter supervisor </mat-error>
+              </mat-form-field>              
+            </div>
+            <div class="col-md-2">
+              <mat-form-field>
+                <input
+                  [ngModel]="class?.drivar"
+                  matInput
+                  required
+                  name="drivar"
+                  #catname='ngModel'
+                  placeholder="drivar">
+                  <mat-error *ngIf="busForm.invalid"> please enter drivar name </mat-error>
+              </mat-form-field>              
+            </div>
+          </div>
+          <div class="example-container">
+
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="busForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  {{ selection.selected.length }} Students</button>
+            </div>
+           </div>
+        </form>
+        
+      </div>
+    <!-- </div> -->
+
+  <!-- </div> -->
+
+  <!-- <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p> -->
+
+  <br><br>
+
+<div></div>
+
+  <div class="panel-heading card">
+
+    <!-- <div *ngIf="students.length == 0" class="alert alert-danger text-center w-100 " style="position: absolute;"> no students</div> -->
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; let i =index"> {{ i + 1 }} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.name.firstname }}  {{ element.name.lastname }} </td>
+      </ng-container>
+    
+      <!-- image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> image </th>
+        <td mat-cell *matCellDef="let element"> 
+          <img src="{{ element.imageUrl ? element.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }}" style="width: 45px" class="img-responsive" />
+        </td>
+      </ng-container>
+
+          
+      <!-- phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> phone </th>
+        <td mat-cell *matCellDef="let element"> 0{{element.phone}} </td>
+      </ng-container>
+    
+      <!-- city Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> city </th>
+        <td mat-cell *matCellDef="let element"> {{element.address.city}} </td>
+      </ng-container>
+    
+      <!-- street Column -->
+      <ng-container matColumnDef="street">
+        <th mat-header-cell *matHeaderCellDef> street </th>
+        <td mat-cell *matCellDef="let element"> {{element.address.street}} </td>
+      </ng-container>
+    
+      <!-- stage Column -->
+      <ng-container matColumnDef="stage">
+        <th mat-header-cell *matHeaderCellDef> stage </th>
+        <td mat-cell *matCellDef="let element"> {{element.educationalStage}} </td>
+      </ng-container>
+
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+      </tr>
+    </table>
+
+    <mat-paginator
+      [length]="totalData"
+      [pageSize]="dataPerPage"
+      [pageSizeOptions]="dataPageSizeOptions"
+      (page)="onChangedPage($event)">
+    </mat-paginator>
+  
+  
+  </div>
+
+
+
+
+</section>
+
+
+
+
+
+
+

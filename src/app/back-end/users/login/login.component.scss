@@ -1,0 +1,152 @@
+// .backend-login{
+//   .login{
+//     background: url("../../../../assets/image/login.png") no-repeat;
+//     background-attachment: fixed;
+//     background-position: center;
+//     background-size: cover;
+//     background-color: rgba(51, 1, 1, 0.267);
+//     position: fixed;;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     overflow: auto;
+//     .opacity{
+//       background-color: #00000099;
+//       width: 100%;
+//       height: 100%;
+//       position: absolute;
+//     }
+//     ul{
+//       list-style: none;  
+//       display: flex;   
+//       flex-wrap: nowrap;
+//       position: absolute;
+//       top: 0;
+//       padding: 0;
+//       li{
+//         background-color: #000000;
+//         text-align: center;
+//         margin-left: 29px;
+//         padding: 3px;
+//         height: 9px;
+//       }
+//     }
+  
+//     button{  
+//       margin-left: 9px;
+//       margin-right: 9px;
+//       padding: -2px;
+//       padding-left: 0;
+//       padding-right: 0;}
+//     .auth-container{
+//       transition: all .5s ease-in-out;
+//       width: 712px;
+//       height: 470px;
+//       background-color: #366565fa;
+//       margin: auto;
+//       position: relative;
+//       margin-top: 7%;
+//       .school-info{
+//         background-color: brown;
+//         color: #fff;
+//         padding: 45px;
+//         .school-info-img{
+//           width: 150px;
+//           margin: auto;
+//           img{ width: 100%;}
+//         }
+//         h4{
+//           font-size: 23px;
+//           font-weight: bold;
+//           text-transform: uppercase;
+//         }
+//         span{
+//           font-size: 11px;
+//           text-transform: lowercase;
+//           font-style: italic;
+//         }
+//         p{
+//           font-size: 14px;
+//         }
+//       }
+  
+//     }
+    
+  
+//     .auth-form{
+//       position: absolute;
+//       top: -39px;
+//       left: -45px;
+//       z-index: 5000;
+//       margin: auto;
+//       border: .5px solid #a2a2a2;
+//       border-radius: 5px;
+//       background-color: aliceblue;
+//       width: 300px;
+//       box-shadow: 0px 16px 28px -4px #131313;
+//       padding: 30px;
+//       //div.logo-img:;
+//       -webkit-border-radius: 5px;
+//       -moz-border-radius: 5px;
+//       -ms-border-radius: 5px;
+//       -o-border-radius: 5px;
+//       div.logo-img{
+//         width: 170px;
+//         margin: auto;
+//         /* background-color: aqua */
+//         img{
+//           width: 100%;
+//         }
+//       }
+//       //   width: 170px;
+//       //   margin: auto;
+//       //   /* background-color: aqua */
+//       //   img{
+//       //     width: 100%;
+//       //   }
+//       // }
+//       mat-form-field{
+//         width: 100%;
+//       }
+//       .mat-option-text{
+//         background-color: #415a69 !important
+//       }
+      
+//     }
+//   }
+  
+//   // Extra small devices (portrait phones, less than 576px)
+//   // @media (max-width: 575.98px) { }
+  
+//   // Small devices (landscape phones, less than 768px)
+//     @media (max-width: 767.98px) { 
+//       .school-info{
+//         display: none;
+//       }
+//       .auth-container{
+//         transition: all .5s ease-in-out;
+//         width: 288px !important;
+//         margin-top: 30% !important;
+//       }
+//      }
+  
+//   // Medium devices (tablets, less than 992px)
+//   @media (max-width: 991.98px) { 
+//     .auth-container{
+//       transition: all .5s ease-in-out;
+//       margin-top: 25% !important;
+//     }
+//   }
+  
+//   // Large devices (desktops, less than 1200px)
+//   @media (max-width: 1199.98px) { 
+//     .auth-container{
+//       transition: all .5s ease-in-out;
+//       margin-top: 20% !important;
+//     }
+//    }
+  
+  
+// }
+

@@ -1,0 +1,180 @@
+
+<section  class="add-employee background-color">
+  <h1>Add Employee</h1>
+  <!-- <span *ngIf="reload"></span> -->
+
+  <div class="pro-form">
+    <form (ngSubmit)="onSave()" [formGroup]="employeeForm">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <div class="form-countiner">
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.name?.firstname"
+                matInput
+                type="text"
+                formControlName="f_name"
+                placeholder=" first Name">
+                <mat-error *ngIf="employeeForm.get('f_name').invalid"> please enter first name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.name?.lastname"
+                matInput
+                type="text"
+                formControlName="l_name"
+                placeholder=" last Name">
+                <mat-error *ngIf="employeeForm.get('l_name').invalid"> please enter last name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                  matInput 
+                  [matDatepicker]="picker" 
+                  placeholder="Choose a date"
+                  [ngModel]="editEmployee?.birthdate"
+                  formControlName="birthdate"
+                  value="{{ editEmployee?.birthdate | date:'yyyy-MM-dd' }}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="employeeForm.get('birthdate').invalid"> please enter  birthdate </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editEmployee?.address?.country"
+                formControlName="country"
+                placeholder="Select Country">
+                <mat-option
+                  *ngFor="let country of allCountries"
+                  value="country.name"
+                  >{{ country.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="employeeForm.get('country').invalid"> please enter country </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editEmployee?.work"
+                formControlName="work"
+                placeholder="Select work type">
+                <mat-option
+                  *ngFor="let work of employeeWorkType"
+                  [value]="work.name"
+                  >{{ work.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="employeeForm.get('work').invalid"> please enter subject </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.address?.city"
+                matInput
+                type="text"
+                formControlName="city"
+                placeholder=" city">
+                <mat-error *ngIf="employeeForm.get('city').invalid"> please enter city </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.address?.street"
+                matInput
+                type="text"
+                formControlName="street"
+                placeholder=" street">
+                <mat-error *ngIf="employeeForm.get('street').invalid"> please enter street </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.email"
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder=" email">
+                <mat-error *ngIf="employeeForm.get('email').invalid"> please enter email </mat-error>
+            </mat-form-field>
+            
+            <div class="row">
+              <!-- <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <mat-slide-toggle
+                [(ngModel)]="activeAccount"
+                [ngModelOptions]="{standalone: true}"
+                (change)="changedStatus($event)">
+                Active Account
+              </mat-slide-toggle>
+              </div>  -->
+              <div class=" col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <label class="example-margin">ginder: </label>
+                <mat-radio-group
+                  [ngModel]="editEmployee?.ginder"
+                    matInput
+                    formControlName="ginder"
+                    placeholder=" ginder">
+                  <mat-radio-button class="example-margin" value="male" >  male </mat-radio-button>
+                  <mat-radio-button class="example-margin" value="female"> female </mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-error *ngIf="userGinder.invalid"> please enter Ginder </mat-error> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-countiner">
+        
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.phone"
+                matInput
+                type="number"
+                formControlName="phone"
+                placeholder=" phone">
+                <mat-error *ngIf="employeeForm.get('phone').invalid"> please enter phone </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.salary"
+                matInput
+                type="number"
+                formControlName="salary"
+                placeholder=" salary">
+                <mat-error *ngIf="employeeForm.get('salary').invalid"> please enter salary </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="editEmployee?.notes"
+                formControlName="notes"
+                rows="6"
+                placeholder="add some note"
+                ></textarea>
+                <mat-hint align="end">{{employeeForm.get('notes').value?.length || 0}}</mat-hint>
+                <mat-error *ngIf="employeeForm.get('notes').invalid"> please enter notes </mat-error>
+            </mat-form-field>
+            <div class="img-form-field">
+              <button type="button" mat-button color="accent" (click)="imagPicker.click()"> Add Image </button>
+              <input
+                type="file"
+                #imagPicker
+                (change)="onImagePicked($event)">
+              <div class="img-review">
+                <img src="{{ imgReview }}" [title]="editEmployee?.imageUrl" [alt]="editEmployee?.imageUrl" *ngIf="imgReview !== null && imgReview" />
+              </div>
+            </div>
+            <br>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="employeeForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  employee Info</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

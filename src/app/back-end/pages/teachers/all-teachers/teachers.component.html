@@ -1,0 +1,90 @@
+<!-- <div class="panel panel-default" *ngIf="parent?.length > 0"> -->
+<section class="teachers background-color">
+  <div class="panel panel-default ">
+    <h1 class="text-center" *ngIf="teachers?.length <= 0">You Dont Have Any teachers</h1>
+    <h1 class="text-center" *ngIf="teachers?.length > 0">Teacheres</h1>
+  
+    <div class="row" >
+        <div class="col-md-7">
+          <section class="checkbox card">
+            <!-- <mat-radio-group >
+              <mat-radio-button 
+                class="checkbox-margin" 
+                [value]="stage" 
+                (change)="educationalStageFillter($event)"
+                *ngFor="let stage of educationalStage">{{ stage }}
+              </mat-radio-button>
+            </mat-radio-group> -->
+          </section>
+        </div>
+        <div class="col-md-4 ">
+            <input #query (keyup)="serchFillter(query.value)" type="text" class="form-control" placeholder="Search By Email.....">
+        </div>
+    </div>
+  </div>
+  <div>
+    <br>
+      <!-- Default panel contents -->
+    <div class="panel-heading card" *ngIf="teachers?.length > 0">
+          
+    <div *ngIf="isSpinner" class="spinner spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  
+    
+      <table matSort class="table" *ngIf="teachers">
+        <tr>
+          <th> id</th>
+          <th> name</th>
+          <th> iamage</th>
+          <th> street </th>
+          <th> city </th>
+          <th> ginder </th>
+          <th> email </th>
+          <th> phone </th>
+          <th> active </th>
+          <th> controls </th>
+        </tr>
+        <tr *ngFor="let teacher of teachers; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ teacher.name.firstname }} {{ teacher.name.lastname }}</td>
+          <td>
+            <img src="{{ teacher?.imageUrl ? teacher?.imageUrl : 'assets/image/icons/teacher.jpg' }}" style="width: 45px" class="img-responsive" />
+          </td>
+          <td>{{ teacher.address.street}}</td>
+          <td>{{ teacher.address.city }}</td>
+          <td>{{ teacher.ginder }}</td>
+          <td>{{ teacher.email}}</td>
+          <td>{{ teacher.phone }}</td>
+          <td> <span [style.color]="teacher.activeAccount === true ? 'green' : 'red'">
+                  <p>{{ teacher.activeAccount ? 'Yes' : 'No'}}
+            </span>
+          </td>
+          <td>
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                [routerLink]="['/backend/teachers/teacher/', teacher._id, 'edit']">Edit</button>
+              <button mat-raised-button color="warn" (click)="onDelete(teacher._id , teacher.name.firstname)">Delete</button>
+              <button
+                mat-raised-button
+                color="accent"
+                [routerLink]="['/backend/teachers/teacher/', teacher._id, 'info']">details</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      
+      <mat-paginator
+        [length]="totalData"
+        [pageSize]="dataPerPage"
+        [pageSizeOptions]="dataPageSizeOptions"
+        (page)="onChangedPage($event)">
+      </mat-paginator>
+  
+    </div>
+  
+  </div>
+  
+</section>

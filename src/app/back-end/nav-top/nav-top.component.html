@@ -1,0 +1,143 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light noPadding" [dir]="textDir"><!-- -->
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <a class="nav-link d-sm d-xs" routerLinkActive="active" mat-button routerLink="/index" target="_blank">
+    <i class="fas fa-school"></i>
+  </a>
+  <a class="nav-link" routerLink="/backend/user/profile">{{ 'navMenu.profile' | translate }}</a>
+
+  <!-- <a class="nav-link d-sm d-xs" routerLinkActive="active" mat-button routerLink="/index" target="_blank">
+    <i class="fas fa-school"></i>
+  </a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <i class="fas fa-school"></i> -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" [ngClass]="{'rtl': marginDir=='ar' }">
+      <!-- <p> -->
+        <!-- <li class="nav-item active">
+          <a class="nav-link d-none .d-sm-block .d-lg-block" routerLinkActive="active" mat-button routerLink="/" target="_blank">
+            <i class="fas fa-school"></i>ddddd</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/backend/user/profile">{{ 'navMenu.profile' | translate }}</a>
+        </li> -->
+      <!-- </p> -->
+    </ul>
+
+    <div class="lang">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="envelope" data-toggle="dropdown">
+            <i class="fas fa-calendar-alt"  
+               matBadgeSize="small" 
+               matBadgeColor="warn"
+               matBadgePosition="above after"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="envelope"  data-toggle="dropdown">
+            <i class="fas fa-comments"  
+               matBadgeSize="small" 
+               matBadgeColor="warn"
+               matBadgePosition="above after"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="envelope"  data-toggle="dropdown">
+            <i class="fas fa-envelope"  
+               matBadge="9" 
+               matBadgeSize="small" 
+               matBadgeColor="warn"
+               matBadgePosition="above after"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-msg" aria-labelledby="envelope">           
+            <li class="dropdown-header notif-header"><i class="fas fa-envelope"></i> New Messages</li>
+            <li class="unread">
+              <a href="#" class="clearfix">
+                <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" class="xs-avatar ava-dropdown" alt="Avatar">
+                <strong>John Doe</strong><i class="pull-right msg-time">5 minutes ago</i><br>
+                <p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+              </a>
+            </li>
+            <li class="dropdown-footer">
+              <div class="">
+                <a class="btn btn-sm btn-block btn-primary">
+                  <i class="fa fa-share"></i> See all messages
+                </a>
+              </div>
+            </li>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="bell"  data-toggle="dropdown">
+            <i class="fas fa-bell"  
+               matBadge="22" 
+               matBadgeSize="small" 
+               matBadgeColor="warn"
+               matBadgePosition="above after"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-msg" aria-labelledby="bell">           
+            <li class="dropdown-header notif-header"><i class="fas fa-envelope"></i> New Messages</li>
+            <li class="unread">
+              <a href="#" class="clearfix">
+                <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" class="xs-avatar ava-dropdown" alt="Avatar">
+                <strong>John Doe</strong><i class="pull-right msg-time">5 minutes ago</i><br>
+                <p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+              </a>
+            </li>
+            <li class="dropdown-footer">
+              <div class="">
+                <a class="btn btn-sm btn-block btn-primary">
+                  <i class="fa fa-share"></i> See all messages
+                </a>
+              </div>
+            </li>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown"  data-toggle="dropdown">
+            <!-- {{ 'navMenu.language' | translate }} -->
+            <i class="fas fa-language"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lang" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="changeLang('ar')">Ar</a>
+            <a class="dropdown-item" (click)="changeLang('en')">En</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown topbar-profile">
+          <a class="nav-link dropdown-toggle" id="profile"  data-toggle="dropdown">
+            <span class="rounded-image topbar-profile-image">
+              <!-- <img src="{{ image }}"> -->
+              <img src="https://media.gq.com/photos/57035dbb894afeac7ebf53fb/4:3/w_2000,h_1500,c_limit/kit-harrington-curly-hair.jpg">
+
+            </span>
+            {{ name }}
+          </a>
+
+          <div class=" dropdown-menu-profile" aria-labelledby="profile">
+            <ul class="dropdown-menu">
+              <li><a routerLink="/backend/user/profile">My Profile</a></li>
+              <li><a routerLink="/backend/user/changePassword">Change Password</a></li>
+              <li><a routerLink="/backend/user/setting">Account Setting</a></li>
+              <li><a routerLink="/backend/user/help"><i class="icon-help-2"></i> Help</a></li>
+              <hr>
+              <li><a routerLinkActive="active" routerLink="/backend"><i class="icon-lock-1"></i> Lock me</a></li>
+              <li><a class="md-trigger" data-modal="logout-modal" (click)="onLogOut()"><i class="icon-logout-1"></i> Logout</a></li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+

@@ -1,0 +1,79 @@
+<!-- <div class="panel panel-default" *ngIf="parent?.length > 0"> -->
+<section class="parents background-color">
+  <div class="panel panel-default ">
+    <h1 class="text-center" *ngIf="parents?.length <= 0 && OneParent?.length <= 0 ">You Don't Have Any Parents </h1>
+    <h1 class="text-center">{{ 'pages.parents' | translate }}</h1>
+  
+    <div class="row">
+      <div class="col-md-4 offset-md-7">
+          <input #query (keyup)="serchFillter(query.value)" type="text" class="form-control" placeholder="{{ 'pages.serchPlaceholder' | translate }}">
+      </div>
+    </div>
+    </div>
+  <br>
+    <!-- Default panel contents -->
+  <div class="panel-heading card" [ngClass]="{'rtl': marginDir=='ar' }">
+    
+    <div *ngIf="isSpinner" class="spinner spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  
+    <table matSort class="table" *ngIf="parents" [ngClass]="{'rtl': marginDir=='ar' }">
+      <tr [ngClass]="{'rtl': marginDir=='ar' }">
+        <th>{{ 'pages.id' | translate }}</th>
+        <th>{{ 'pages.name' | translate }}</th>
+        <th>{{ 'pages.iamage' | translate }}</th>
+        <th>{{ 'pages.childes' | translate }}</th>
+        <th>{{ 'pages.street' | translate }}</th>
+        <th>{{ 'pages.city' | translate }}</th>
+        <th>{{ 'pages.ginder' | translate }}</th>
+        <th>{{ 'pages.email' | translate }}</th>
+        <th>{{ 'pages.phone' | translate }}</th>
+        <th>{{ 'pages.active' | translate }}</th>
+        <th>{{ 'pages.controls' | translate }}</th>
+      </tr>
+  
+      <tr *ngFor="let parent of parents; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ parent.name.firstname }} {{ parent.name.lastname }}</td>
+        <td> 
+          <img *ngIf="parent.imageUrl" src="{{ parent.imageUrl }}" style="width: 45px" class="img-responsive" />
+          <img *ngIf="!parent.imageUrl" src="{{ parent.ginder == 'female' ? 'assets/image/icons/female-p.png' : 'assets/image/icons/male-p.png' }}" style="width: 45px" class="img-responsive" />
+        </td>
+        <td> <p> {{ parent.childes.length}} </p> </td>
+        <td>{{ parent.address.street}}</td>
+        <td>{{ parent.address.city }}</td>
+        <td>{{ parent.ginder }}</td>
+        <td>{{ parent.email }}</td>
+        <td>{{ parent.phone }}</td>
+        <td> <span [style.color]="parent.activeAccount === true ? 'green' : 'red'">
+              <p>{{ parent.activeAccount ? 'Yes' : 'No'}}
+          </span>
+        </td>
+        <td>
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/backend/parents/parent/', parent._id , 'edit' ]">{{ 'pages.edit' | translate }}</button>
+            <button mat-raised-button color="warn" (click)="onDelete(parent._id , parent.name.firstname, parent.email, parent.phone)">{{ 'pages.delete' | translate }}</button>
+            <button
+              mat-raised-button
+              color="accent"
+              [routerLink]="['/backend/parents/parent/', parent._id, 'info']">{{ 'pages.details' | translate }}</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  
+    <mat-paginator
+      [length]="totalData"
+      [pageSize]="dataPerPage"
+      [pageSizeOptions]="dataPageSizeOptions"
+      (page)="onChangedPage($event)">
+    </mat-paginator>
+  
+  </div>
+  
+</section>
+

@@ -1,0 +1,85 @@
+// .parent-info{
+//   .pageInfo{
+//     .card {
+//       border-radius: .55rem;
+//       background: #fff;
+//       transition: .5s;
+//       border: 0;
+//       margin-bottom: 30px;
+//       position: relative;
+//       width: 100%;
+//       box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+//       overflow: hidden;
+  
+//       &:hover .body{
+//         .table{
+//           tr{
+//             .fatrash{
+//               right: 0px;
+//               color: red;
+//               position: absolute;
+//               transition: all .5s ease-in-out;
+//               -webkit-transition: all .5s ease-in-out;
+//               -moz-transition: all .5s ease-in-out;
+//               -ms-transition: all .5s ease-in-out;
+//               -o-transition: all .5s ease-in-out;
+//             }
+//           }
+//         } 
+//       }
+  
+//       .body {
+//         color: #444;
+//         padding: 20px;
+//         font-weight: 400;
+//         ul{
+//           li{
+//             text-align: left;
+//             p{
+//               // background-color: salmon;
+//               display: inline-block;
+//               padding-right: 15px;
+//               i{
+//                 // background-color: rebeccapurple;
+//               }
+//             }
+//           }
+//         }
+//         p{
+//           text-align: left;
+//         }
+//         .imageUrl{
+//           width: 50px;
+//           img{
+//             width: 100%;
+//           }
+//         }
+//         .table td, 
+//         .table th{
+//           border-top: 0;
+//         }
+//         .table{
+//           tr{
+//             .fatrash{
+//               right: -43px;
+//               color: red;
+//               position: absolute;
+//               transition: all .5s ease-in-out;
+//               -webkit-transition: all .5s ease-in-out;
+//               -moz-transition: all .5s ease-in-out;
+//               -ms-transition: all .5s ease-in-out;
+//               -o-transition: all .5s ease-in-out;
+//             }
+//           }
+//         }
+  
+//       }
+//       .display-flex{
+//         display: flex; 
+//         justify-content: space-around;
+//       }
+//     }
+  
+//   }
+  
+// }

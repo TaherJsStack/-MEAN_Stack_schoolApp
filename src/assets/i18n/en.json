@@ -1,0 +1,115 @@
+{
+    "navMenu":{  
+      "home": "home",
+      "language": "language",
+      "profile": "profile"
+    },
+  
+    "sideMenu": {
+      "dashboard":"dashboard",
+      "parents": "parents",
+      "addParent":"add Parent",
+      "addParent2":"Parent",
+      "parent":"parent",
+      "students":"students",
+      "addStudent":"add Student",
+      "student":"student",
+      "teachers":"teachers",
+      "addTeacher":"add Teacher",
+      "teacher":"teacher",
+      "addClass":"add Class",
+      "classes":"classes",
+      "library":"library",
+      "notice":"notifications",
+      "notes": "notes",
+      "payments": "payments",
+      "addPayment": "add Payment",
+      "employees": "employees",
+      "addEmployee": "add Employee",
+      "exames": "exames",
+      "final": "final",
+      "monthly": "monthly",
+      "attendes": "attendes",
+      "buss": "bus",
+      "subjects": "subjects",
+      "textbook": "textbook",
+      "addbus":"add bus",
+      "allLines": "all Lines",
+      "allAttends": "allAttends",
+      "results":"results"
+    },
+    "pages": {
+      "parents": "parents",
+      "dashboard": "Dashboard",
+      "Address": "Address",
+      "Email_address": "Email address",
+      "Mobile": "Mobile",
+      "Bus": "Bus",
+      "books": "books",
+      "school": "school",
+      "clothes": "clothes",
+      "New_Users": "New Users",
+      "parent":"parent",
+      "students":"students",
+      "employees": "employees",
+      "teachers":"teachers",
+        
+      "id": "id",
+      "name": "name",
+      "iamage": "iamage",
+      "childes": "childes",
+      "street": "street",
+      "city": "city",
+      "ginder": "ginder",
+      "email": "email",
+      "phone": "phone",
+      "active": "active",
+      "controls": "controls",
+      "serchPlaceholder": "Search by email.....",
+
+      "f_name": "first Name min 3 max 15 ",
+      "f_name2": "first Name",
+      "l_name": "last Name",
+      "c_date": "Choose a date",
+      "s_Country": "Select Country",
+      "z_code": " zip code",
+      "job": "job",
+      "a_note": "add some note",
+      "a_account": "Active Account",
+      "male": "male",
+      "female": "female",
+      "a_Image": "Add Image",
+      "p_Info":"Parent Info",
+      "Update": "Update",
+      "add": "add",
+      "Childs": "Childs",
+      
+      "QRCOde": "QRCOde",
+      "Stage": "Stage",
+      "level": "level",
+      
+      "p_email": "parent Email",
+      "p_pnone": "parent phone",
+      "s_stage": "Select educational Stage",
+      "s_leve": "Select level",
+      "s_info": "Student info",
+      "details": "details",
+      "delete": "Delete",
+      "edit": "Edit"
+
+    },
+
+    "levels": {
+      "all_Stages": "all Stages",
+      "preschool": "preschool",
+      "elementary": "elementary",
+      "middle": "middle",
+      "high": "high"
+    },
+    "errMess": {
+      "f_name": "please enter first name  min 3 max 15",
+      "": ""
+    }
+  
+  }
+  

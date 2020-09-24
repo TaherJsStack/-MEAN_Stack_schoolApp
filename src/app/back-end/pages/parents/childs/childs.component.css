@@ -1,0 +1,67 @@
+.dash_header .row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.dash_header .card {
+  border-radius: 0.55rem;
+  background: #fff;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.dash_header .card .header {
+  color: #444;
+  padding: 20px;
+  position: relative;
+  box-shadow: none;
+}
+.dash_header .card .header h2 {
+  font-size: 16px;
+  color: #444;
+  position: relative;
+}
+.dash_header .card .body {
+  color: #444;
+  padding: 20px;
+  font-weight: 400;
+}
+.dash_header .card .body .text-muted {
+  color: #6c757d !important;
+  display: block;
+  text-align: left;
+  font-size: 80%;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+.dash_header .card .body p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: left;
+  margin-bottom: 11px;
+}
+.dash_header .cards {
+  border-radius: 0.55rem;
+  background: #fff;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 29px 8px;
+}
+.dash_header .cards .info {
+  width: 50%;
+  float: left;
+}
+.dash_header .cards .icon {
+  width: 50%;
+  float: right;
+  font-size: 33px;
+}

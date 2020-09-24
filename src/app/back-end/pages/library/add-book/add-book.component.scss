@@ -1,0 +1,93 @@
+// .add-book{
+//   .card {
+//     border-radius: .55rem;
+//     background: #fff;
+//     transition: .5s;
+//     border: 0;
+//     margin-bottom: 30px;
+//     position: relative;
+//     width: 100%;
+//     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+//     padding: 5px 0 12px 0;
+//     // padding-bottom: 12px;
+//     .body{
+//       h5{
+//         height: 20px;
+//         white-space: nowrap;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         padding: 1px 13px;
+        
+//       }
+//       img{
+//         border-top-left-radius: 7px; 
+//         border-bottom-right-radius: 7px;
+//         width: 150px;
+//         height: 150px;
+//       }
+//       h6{
+//         white-space: nowrap;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         padding: 1px 13px;
+//         margin: 0;
+//       }
+//       span{}
+//     }
+//     .card-footer {
+//       padding: 0;
+//       background-color: transparent;
+//       border-top: 0px solid rgba(0,0,0,.125);
+//       ul{
+//         list-style: none; 
+//         padding-left: 0; 
+//         display: flex;
+//         justify-content: space-around;
+//         margin: 0;
+//         .mat-raised-button{
+//           min-width: 30px;
+//           padding: 0px;
+//           font-size: 10px;
+//           height: 25px;
+//           line-height: 0;
+//         }
+//       }
+//     }
+//   }
+//   .img-form-field{
+//     height: 120px;
+//     border-radius: 4px;
+//     padding: 8px 25px;
+//     button{
+//       float: left;
+//       margin-top: 6%;
+//     }
+//     input{
+//       visibility: hidden;
+//       display: none;
+//     }
+//     .img-review{
+//       float: right;
+//       max-width: 100px;
+//       width: 100px;
+//       height: 100px;
+//       background-color: rgba(0, 139, 139, 0.5);
+//       margin-right: 10px;
+//       img{
+//         max-width: 100%;
+//       }
+//     }
+//   }
+  
+//   @media (min-width: 1000px) and (max-width: 1200px) {
+//     .card{
+//       .body{
+//         img{
+//           width: 100px;
+//           height: 100px;
+//         }
+//       }
+//     }
+  
+//   }
+// }

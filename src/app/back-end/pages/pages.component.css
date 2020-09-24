@@ -1,0 +1,81 @@
+.block-header h2 {
+  font-size: 13px;
+  text-align: left;
+}
+.block-header .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  font-size: 13px;
+}
+.align-left,
+.user-account,
+.user-account .dropdown,
+.block-header .bh_chart,
+.accordion .card-header .btn,
+.chat-widget li.left .chat-info,
+.testimonial2 .testimonial-desc {
+  text-align: left;
+}
+.m-r-20,
+.navbar-fixed-top .navbar-right #navbar-search,
+.navbar-nav ul.notifications li > a .media .media-left,
+.sidebar-nav .metismenu > li i,
+.block-header .bh_chart,
+.ct-legend li,
+.media.mleft .media-left,
+.bs-example .media .media-left,
+.chat-widget li.right .chat-info {
+  margin-right: 20px;
+}
+.m-r-15,
+.navbar-nav,
+.new_timeline .header .color-overlay .day-number {
+  margin-right: 15px;
+}
+.m-l-20,
+.block-header .bh_chart,
+.media.mright .media-right,
+.chat-widget li.left .chat-info,
+.invoice1 .info {
+  margin-left: 20px;
+}
+.block-header .bh_chart {
+  display: inline-block;
+  vertical-align: middle;
+}
+.m-r-15,
+.navbar-nav,
+.new_timeline .header .color-overlay .day-number {
+  margin-right: 15px;
+}
+.float-left {
+  float: left !important;
+}
+.block-header .bh_chart small {
+  text-transform: uppercase;
+}
+.small,
+small {
+  font-size: 80%;
+  font-weight: 400;
+}
+footer {
+  padding: 20px 0;
+  font-size: 12px;
+  border-top: 1px solid #b9c1cb;
+  color: #7a868f;
+  text-align: left;
+}
+footer .pull-right {
+  float: right !important;
+}
+footer .footer-links a {
+  color: #7a868f;
+  padding: 1px 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}

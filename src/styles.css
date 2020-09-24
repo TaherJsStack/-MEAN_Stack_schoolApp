@@ -1,0 +1,51 @@
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer,
+.mat-progress-bar-fill::after {
+  background-color: #ff80ab !important;
+}
+.background-color {
+  background-color: rgba(29, 97, 143, 0.185);
+  padding: 15px 40px 20px;
+}
+.background-color h1 {
+  color: #d4d4d4;
+}
+.background-color .form-countiner {
+  border-radius: 0.55rem;
+  background: #fff;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 19px;
+  width: 85%;
+  margin: auto;
+}
+.background-color .form-countiner mat-form-field {
+  width: 100%;
+}
+.flash-message {
+  color: #fff;
+  text-shadow: 10px 10px 10px #f78f1e;
+  border-radius: 4px;
+  position: fixed;
+  top: 8%;
+  right: 0;
+  min-width: 28%;
+  transition: all ease-in-out 5s;
+  z-index: 999;
+}
+svg {
+  width: 100px;
+  height: 100%;
+}

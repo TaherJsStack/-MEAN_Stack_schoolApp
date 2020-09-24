@@ -1,0 +1,270 @@
+<section class="side-menu">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light noPadding">
+    <div style="max-width: 150px; margin: auto;">
+      <img src="assets/image/logo.png" alt="title" style="width: 100%;">
+    </div>
+  </nav>
+  
+  <div class="profile-info">
+    <span></span>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <a class="rounded-image profile-image">
+          <img src="https://media.gq.com/photos/57035dbb894afeac7ebf53fb/4:3/w_2000,h_1500,c_limit/kit-harrington-curly-hair.jpg">
+          <!-- <img src="{{ image }}"> -->
+        </a>
+      </div>
+      <div class="col-md-8 col-sm-12">
+          <div class="profile-text">{{ name }} <b></b></div>
+          <div class="profile-buttons">
+            <a  title="messages">
+              <button mat-raised-button>
+                <i class="fa fa-envelope"></i>
+              </button>
+            </a>
+            <a  title="chats" class="open-right">
+              <button mat-raised-button>
+                <i class="fa fa-comments"></i>
+              </button>
+            </a>
+            <a title="Sign Out" (click)="onLogOut()">
+              <button mat-raised-button>
+                <i class="fa fa-power-off text-red-1"></i>
+              </button>
+            </a>
+          </div>
+      </div>  
+    </div>
+    <span></span>
+  
+  </div>
+  <!--  d-none d-sm-block d-md-block d-lg-block d-xl-block -->
+  <section class="mat-accordion">
+    <mat-accordion>
+      
+      <!-- dashboard -->
+      <button routerLinkActive="active" mat-button color="primary" routerLink="/backend/dashboard" 
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-tachometer-alt" ></i> {{ 'sideMenu.dashboard' | translate }}
+      </button>
+  
+      <!-- parents -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-users"></i> {{ 'sideMenu.parents' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/backend/parents/allParents"> <i class="fas fa-users"></i> {{ 'sideMenu.parents' | translate }}</a>
+          </li> 
+          <li>
+            <a routerLinkActive="active" routerLink="/backend/parents/addParent"><i class="fas fa-user-plus"></i> {{ 'sideMenu.addParent' | translate }} </a>
+          </li> 
+          <!-- <li><a routerLink="/backend/">{{ 'sideMenu.parent' | translate }}</a></li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- students -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-restroom"></i> {{ 'sideMenu.students' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/students/allStudents"><i class="fas fa-restroom"></i> {{ 'sideMenu.students' | translate }}</a>
+          </li> 
+          <li>
+            <a routerLink="/backend/students/addStudent"> <i class="fas fa-user-plus"></i> {{ 'sideMenu.addStudent' | translate }}</a>
+          </li> 
+          <!-- <li><a routerLink="/backend/">{{ 'sideMenu.student' | translate }}</a></li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- teachers -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-chalkboard-teacher"></i> {{ 'sideMenu.teachers' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/teachers/allTeachers"> <i class="fas fa-chalkboard-teacher"></i> {{ 'sideMenu.teachers' | translate }}</a>
+          </li> 
+          <li> 
+            <a routerLink="/backend/teachers/addTeacher"> <i class="fas fa-user-plus"></i> {{ 'sideMenu.addTeacher' | translate }} </a>
+          </li> 
+          <!-- <li><a routerLink="/backend/">{{ 'sideMenu.teacher' | translate }}</a></li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- employees -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-user"></i> {{ 'sideMenu.employees' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/employees/allEmployees"><i class="fas fa-user"></i> {{ 'sideMenu.employees' | translate }}</a>
+          </li> 
+          <li> 
+            <a routerLink="/backend/employees/addEmployees"> <i class="fas fa-user-plus"></i> {{ 'sideMenu.addEmployee' | translate }} </a>
+          </li> 
+          <!-- <li><a routerLink="/backend/">{{ 'sideMenu.teacher' | translate }}</a></li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- payments -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-wallet"> </i> {{ 'sideMenu.payments' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <!-- <li>
+            <a routerLink="/backend/payments/allPayments"> <i class="fas fa-chalkboard-teacher"></i> {{ 'sideMenu.payments' | translate }}</a>
+          </li>  -->
+          <li> 
+            <a routerLink="/backend/payments/addPayment"> <i class="fas fa-user-plus"></i> {{ 'sideMenu.addPayment' | translate }} </a>
+          </li> 
+          <!-- <li><a routerLink="/backend/">{{ 'sideMenu.teacher' | translate }}</a></li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- classes -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="far fa-lightbulb"></i> {{ 'sideMenu.classes' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/classes/allClasses"> 
+              <i class="far fa-lightbulb"></i> {{ 'sideMenu.classes' | translate }}
+            </a>
+          </li> 
+          <li>
+            <a routerLink="/backend/classes/addClass"> 
+              <i class="fas fa-users-cog"></i> {{ 'sideMenu.addClass' | translate }}
+            </a>
+          </li> 
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- bus -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-bus-alt"></i> {{ 'sideMenu.buss' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/bus/allLines"> 
+              <i class="fas fa-bus"></i> {{ 'sideMenu.allLines' | translate }}
+            </a>
+          </li> 
+          <li>
+            <a routerLink="/backend/bus/addBus"> 
+              <i class="fas fa-bus"></i> {{ 'sideMenu.addbus' | translate }}
+            </a>
+          </li> 
+  
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- attendes -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="far fa-clipboard"></i> {{ 'sideMenu.attendes' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/attendes/allAttends"> 
+              <i class="fas fa-bus-alt"></i> {{ 'sideMenu.allAttends' | translate }}
+            </a>
+          </li> 
+          <!-- <li>
+            <a routerLink="/backend/attendes/bus"> 
+              <i class="fas fa-bus-alt"></i> {{ 'sideMenu.buss' | translate }}
+            </a>
+          </li> 
+          <li>
+            <a routerLink="/backend/attendes/class"> 
+              <i class="far fa-lightbulb"></i> {{ 'sideMenu.classes' | translate }}
+            </a>
+          </li>  -->
+        </ul>
+      </mat-expansion-panel>
+  
+      <!-- exames -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-file-export"></i> {{ 'sideMenu.exames' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>
+            <a routerLink="/backend/exames/monthly"> 
+              <i class="fas fa-copy"></i> {{ 'sideMenu.monthly' | translate }}
+            </a>
+          </li> 
+          <li>
+            <a routerLink="/backend/exames/final"> 
+              <i class="fas fa-file-alt"></i> {{ 'sideMenu.final' | translate }}
+            </a>
+          </li> 
+        </ul>
+      </mat-expansion-panel>
+      
+      <!-- <button mat-button color="primary"  routerLink="/backend/subjects"
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-book"></i> {{ 'sideMenu.subjects' | translate }}
+      </button> -->
+  
+      <button mat-button color="primary"  routerLink="/backend/textbook"
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-book"></i> {{ 'sideMenu.textbook' | translate }}
+      </button>
+  
+      <button mat-button color="primary"  routerLink="/backend/results"
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-poll-h"></i>{{ 'sideMenu.results' | translate }}
+      </button>
+  
+      <!-- library -->
+      <button mat-button color="primary" routerLink="/backend/library/addBook"
+      class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-book-reader"></i> {{ 'sideMenu.library' | translate }}
+      </button>
+  
+      <!-- notification -->
+      <button mat-button color="primary"  routerLink="/backend/notification"
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-bell"></i> {{ 'sideMenu.notice' | translate }}
+      </button>
+      
+      <!-- notice -->
+      <button mat-button color="primary"  routerLink="/backend/notice"
+        class="matStyle" [ngClass]="{'ltr':  textDir=='en', 'rtl': textDir=='ar' }">
+        <i class="fas fa-pen-nib"></i> {{ 'sideMenu.notes' | translate }}
+      </button>
+  
+    </mat-accordion>
+  
+  </section>
+  
+  
+</section>
+

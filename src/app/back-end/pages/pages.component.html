@@ -1,0 +1,60 @@
+<div class="block-header">
+  <div class="row">
+    <div class="col-lg-6 col-md-4 d-none d-md-block d-lg-block d-xl-block">
+      <h2 [ngClass]="{' rtl ': textDir=='ar', 'ltr': textDir=='en' }" class="">
+        <a routerLink="/" class="btn btn-xs btn-link btn-toggle-fullwidth">
+          <i class="fa fa-arrow-left"></i>
+        </a>Home
+      </h2>
+      <ul class="breadcrumb">
+        <li class=""><a routerLink="/"><i class="fas fa-house-damage"></i> </a></li>                            
+        <li class="" >{{ pathname }}</li>
+        <!-- <li class="breadcrumb-item" >{{ parts }}</li> -->
+        <!-- <li class="breadcrumb-item" *ngFor="let part of parts" >{{ parts }}</li> -->
+        <!-- <li class="breadcrumb-item active">Add Payments</li> -->
+      </ul>
+    </div>
+    <!-- [ngClass]="{'rtl': textDir=='ar' }" -->
+    <div class="col-lg-6 col-md-8 col-sm-12 d-none d-md-block d-lg-block d-xl-block " [ngClass]="{'ltr': textDir=='ar', 'rtl': textDir=='en' }" >
+      <div class="bh_chart">
+        <div class="float-left m-r-15">
+          <small>Visitors</small>
+          <h6 class="mb-0 mt-1"><i class="fas fa-users"></i> 1,784</h6>
+        </div>
+        <!-- <span class="bh_visitors float-right"><i class="fas fa-u5sers"></i></span> -->
+      </div>
+      <div class="bh_chart hidden-sm">
+        <div class="float-left m-r-15">
+          <small>Visits</small>
+          <h6 class="mb-0 mt-1"><i class="fas fa-globe"></i> 325</h6>
+        </div>
+        <!-- <span class="bh_visits float-right"><canvas width="41" height="42" style="display: inline-block; width: 41px; height: 42px; vertical-align: top;"></canvas></span> -->
+      </div>
+      <div class="bh_chart hidden-sm">
+        <div class="float-left m-r-15">
+          <small>Chats</small>
+          <h6 class="mb-0 mt-1"><i class="fas fa-comments"></i> 13</h6>
+        </div>
+        <!-- <span class="bh_chats float-right"><canvas width="47" height="42" style="display: inline-block; width: 47px; height: 42px; vertical-align: top;"></canvas></span> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<flash-messages></flash-messages>
+
+<!-- <perfect-scrollbar [style.height.px]="getHeight"> -->
+  <router-outlet></router-outlet>
+<!-- </perfect-scrollbar> -->
+
+<footer>
+  Taher Ahmed MEAN Stack && Mobil App Develober © 2020
+  <div class="footer-links pull-right">
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >About</a>
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >Support</a>
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >Terms of Service</a>
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >Legal</a>
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >Help</a>
+    <a href="https://stark-earth-51780.herokuapp.com/" target="_blank" >Contact Us</a>
+  </div>
+</footer>

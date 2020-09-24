@@ -1,0 +1,102 @@
+<section class="all-attendes background-color">
+  <h1 class="text-center">attendees</h1>
+  <mat-tab-group (selectedTabChange)="tabChanged($event)" class="card" >
+    <mat-tab [label]="attend.type" *ngFor="let attend of attendes?.atendes">
+
+      <button type="button"
+              (click)="onMonthAttendes(attend.type, att.month)"
+              class="btn btn-info ml-5 mt-2"
+              *ngFor="let att of attend.monthAttendes">
+              {{ att.month }}
+      </button>
+      <br><br>
+
+      <button type="button"
+              (click)="onDayAttgendes(dayes.day)"
+              class="btn btn-info ml-5 mt-2"
+              *ngFor="let dayes of attendesDay">
+              Day {{ dayes.day }} 
+      </button>
+      <br><br>
+
+      <h5 *ngFor="let day of dayAttendes">{{ day.type }} - {{ day.day }} - {{ day.month }} </h5>
+
+      <table class="table" *ngIf="!isClassAttend">
+        <caption>List of students</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">area</th>
+            <th scope="col">busNo</th>
+            <th scope="col">drivar</th>
+            <th scope="col">supervisor</th>
+            <th scope="col">students</th>
+            <th scope="col">controller</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let dayy of dayAttendes">
+          <tr *ngFor="let day of dayy?.busAttendes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ day?.area }}</td>
+            <td>{{ day?.busNo }}</td>
+            <td>{{ day?.drivar }}</td>
+            <td>{{ day?.supervisor }}</td>
+            <td>{{ day?.students?.length }}</td>
+            <td>
+              <div class="controllers-buttons">
+                <a  title="more Info" 
+                    [routerLink]="['/backend/attendes/attend/', day._id, 'bus', 'info']"
+                    (click)="onAttendInfo(day, dayy.type, dayy.day, dayy.month )">
+                  <button mat-raised-button >
+                    <i class="fas fa-info"></i>
+                  </button>
+                </a>
+                
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+
+      <table class="table" *ngIf="isClassAttend">
+        <caption>List of students</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">level</th>
+            <th scope="col">class</th>
+            <th scope="col">students</th>
+            <th scope="col">controller</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let dayy of dayAttendes">
+          <tr *ngFor="let day of dayy?.classesAttendes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ day?.levelName }}</td>
+            <td>{{ day?.className }}</td>
+            <td>{{ day?.students?.length }}</td>
+            <td>
+              <div class="controllers-buttons">
+                <a  title="more Info" 
+                    [routerLink]="['/backend/attendes/attend/', day._id, 'class', 'info']"
+                    (click)="onAttendInfo(day, dayy.type, dayy.day, dayy.month )">
+                  <button mat-raised-button>
+                    <i class="fas fa-info"></i>
+                  </button>
+                </a>
+                
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+</section>

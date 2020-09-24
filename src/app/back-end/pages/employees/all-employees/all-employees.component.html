@@ -1,0 +1,83 @@
+<!-- <div class="panel panel-default" *ngIf="parent?.length > 0"> -->
+
+<section class="all-employees background-color">
+  <div class="panel panel-default">
+    <h1 class="text-center" *ngIf="employees?.length == 0 ">You Dont Have Any employees</h1>
+    <h1 class="text-center" *ngIf="employees?.length > 0 ">Employees</h1>
+    <br>
+    <div class="row">
+      <div class="col-md-7">
+        <section class="checkbox card">
+          <mat-radio-group >
+            <mat-radio-button 
+              class="checkbox-margin" 
+              [value]="work" 
+              (change)="workTypeFillter($event)"
+              *ngFor="let work of works">{{ work }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+      <div class="col-md-4">
+          <input #query (keyup)="serchFillter(query.value)" type="text" class="form-control" placeholder="Search By Email.....">
+      </div>
+    </div>
+  </div>
+  <br>
+    <!-- Default panel contents -->
+  <div class="panel-heading card">
+    <table matSort class="table" *ngIf="employees">
+        <tr>
+          <th> id</th>
+          <th> name</th>
+          <th> iamage</th>
+          <th> work</th>
+          <th> address </th>
+          <th> ginder </th>
+          <th> email </th>
+          <th> phone </th>
+          <th> active </th>
+          <th> controls </th>
+        </tr>
+        <!-- {{ parent?.imageUrl ? parent?.imageUrl : 'assets/image/icons/male-p.png'  }}" -->
+      <tr *ngFor="let employee of employees; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ employee.name.firstname }} {{ employee.name.lastname }}</td>
+        <td>
+          <img src="{{ employee?.imageUrl ? employee?.imageUrl : 'assets/image/icons/employee.png' }}" style="width: 45px" class="img-responsive" />
+        </td>
+        <td>{{ employee.work }}</td>
+        <td>{{ employee.address.street}} / {{ employee.address.city }} </td>
+        <td>{{ employee.ginder }}</td>
+        <td>{{ employee.email}}</td>
+        <td>{{ employee.phone }}</td>
+        <td> <span [style.color]="employee.activeAccount === true ? 'green' : 'red'">
+                <p>{{ employee.activeAccount ? 'Yes' : 'No'}}
+          </span>
+        </td>
+        <td>
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/backend/employees/employee/', employee._id, 'edit']">Edit</button>
+            <button mat-raised-button color="warn" (click)="onDelete(employee._id , employee.name.firstname)">Delete</button>
+            <button
+              mat-raised-button
+              color="accent"
+              [routerLink]="['/backend/employees/employee/', employee._id, 'info']">details</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [length]="totalData"
+      [pageSize]="dataPerPage"
+      [pageSizeOptions]="dataPageSizeOptions"
+      (page)="onChangedPage($event)">
+    </mat-paginator>
+  
+  </div>
+</section>
+

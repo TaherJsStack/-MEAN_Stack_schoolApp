@@ -1,0 +1,11 @@
+.flash-message {
+  color: #fff;
+  text-shadow: 10px 10px 10px #f78f1e;
+  border-radius: 4px;
+  position: fixed;
+  top: 15%;
+  right: 0;
+  min-width: 28%;
+  transition: all ease-in-out 5s;
+  z-index: 999;
+}

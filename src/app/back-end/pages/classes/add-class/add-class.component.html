@@ -1,0 +1,142 @@
+<section class="add-class background-color"> 
+  <!-- <span *ngIf="reload"></span> -->
+  <h1 class="text-center">add new class</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form card">
+        <form (ngSubmit)="onSave(classForm)" #classForm="ngForm">
+          <div class="example-container">
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="class?.educationStage"
+                name="educationStage"
+                #educationStage='ngModel'
+                placeholder="Select stage"
+                (ngModelChange)="stageChange($event)">
+                <mat-option
+                  *ngFor="let stage of educationalStage"
+                  [value]="stage"
+                  >{{ stage }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="classForm.invalid"> select stage </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select   
+                matInput
+                [ngModel]="class?.level"
+                name="level"
+                #level='ngModel'
+                placeholder="Select level"
+                (ngModelChange)="levelChange($event)">
+                <mat-option
+                  *ngFor="let level of levels"
+                  [value]="level"
+                  >{{ level }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="classForm.invalid"> select stage </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="class?.name"
+                matInput
+                required
+                name="name"
+                #catname='ngModel'
+                placeholder="class Name">
+                <mat-error *ngIf="classForm.invalid"> please enter class name </mat-error>
+            </mat-form-field>
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="classForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  class</button>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <!-- (ngModelChange)="stageChange($event)" -->
+      <!-- <h1 class="text-center" *ngIf="categories.length <= 0">You Don't Have Any categories please add one</h1> -->
+      <mat-tab-group  (selectedTabChange)="tabChanged($event)" class="card" >
+        <mat-tab [label]="stage.stageName" *ngFor="let stage of stages">
+          <button type="button" 
+                  class="btn btn-info ml-5 mt-2" 
+                  *ngFor="let level of stage.leveles" >
+                  {{ level.levelName }}
+                </button>
+          
+        </mat-tab>
+ 
+      </mat-tab-group>
+
+    </div> <!-- End prev calss -->
+
+  </div>
+
+  <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p>
+
+  <br><br><br>
+
+  <div class="panel-heading card">
+    <table matSort class="table" *ngIf="students">
+      <tr>
+        <th>r</th>
+        <th> id</th>
+        <th> name</th>
+        <th> iamage</th>
+        <th> ginder </th>
+        <th> stage </th>
+        <th> level </th>
+        <th> has Class</th>
+        <th> active </th>
+      </tr>
+
+      <div *ngIf="students.length == 0" class="alert alert-danger text-center w-100 " style="position: absolute;"> no students</div>
+
+      <tr *ngFor="let student of students; let i = index">
+        <td> 
+          <mat-checkbox 
+            (click)="studentCheck(student._id, student.name.firstname, student.name.lastname)" 
+            [checked]="class?.students._id"> </mat-checkbox>
+        </td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ student.name.firstname }} {{ student.name.lastname }}</td>
+        <td>
+          <img src="{{ student.imageUrl ? student.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }}" style="width: 45px" class="img-responsive" />
+        </td>
+   
+        <td>{{ student.ginder }}</td>
+        <td>{{ student.educationalStage}}</td>
+        <td>{{ student.level }}</td>
+        <td> <span [style.color]="student.haveClass === true ? 'green' : 'red'">
+            <p>{{ student.haveClass ? 'Yes' : 'No'}}
+          </span>
+        </td>
+        <td> <span [style.color]="student.activeAccount === true ? 'green' : 'red'">
+                <p>{{ student.activeAccount ? 'Yes' : 'No'}}
+          </span>
+        </td>
+        
+      </tr>
+    </table>
+  
+  <mat-paginator
+    *ngIf="students?.length > 0"
+    [length]="totalData"
+    [pageSize]="dataPerPage"
+    [pageSizeOptions]="dataPageSizeOptions"
+    (page)="onChangedPage($event)">
+  </mat-paginator>
+  
+  </div>
+  
+
+</section>

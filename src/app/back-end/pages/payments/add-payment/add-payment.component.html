@@ -1,0 +1,162 @@
+
+<section class="add-payment background-color">
+
+  <h1>Add Payment</h1>
+  <span *ngIf="reload"></span>
+
+  <br>
+  <div class="row">
+    <div class="col-md-4 offset-md-7">
+      <input #query (keyup)="serchFillter(query.value)" type="number" class="form-control" placeholder="Search By Student Phone No .....">
+    </div>
+  </div>
+  <br>
+
+  <div class="panel-heading" *ngIf="student">
+    <table matSort class="table">
+      <tr>
+        <th> name</th>
+        <th> iamage</th>
+        <th> street </th>
+        <th> city </th>
+        <th> ginder </th>
+        <th> email </th>
+        <th> phone </th>
+        <th> active </th>
+        <th> controls </th>
+      </tr>
+      <tr>
+        <td>{{ student.name.firstname }} {{ student.name.lastname }}</td>
+        <td>
+          <img src="{{ student.imageUrl ? student.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }}" style="width: 45px" class="img-responsive" />
+        </td>
+        <td>{{ student.address.street}}</td>
+        <td>{{ student.address.city }}</td>
+        <td>{{ student.ginder }}</td>
+        <td>{{ student.email}}</td>
+        <td>{{ student.phone }}</td>
+        <td> 
+          <span [style.color]="student.activeAccount === true ? 'green' : 'red'">
+            <p>{{ student.activeAccount ? 'Yes' : 'No'}}
+          </span>
+        </td>
+        <td>
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="onPay(student._id)">payment</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr>
+
+  <section *ngIf="isPayForm">
+    <div>
+      <form>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="form-countiner">
+              <div class="Prices checkbox">
+                <p class="checkbox-margin">School:  500$ </p>
+                <p class="checkbox-margin">Book:    200$ </p>
+                <p class="checkbox-margin">Clothes: 300$ </p>
+                <p class="checkbox-margin">bus:    500$ </p>
+              </div>
+              <div class="checkbox">
+                <p> pay: </p>
+                <mat-checkbox 
+                  class="checkbox-margin" 
+                  (change)="onSchoolChange($event)" 
+                  [disabled]="studentPayment?.school > 0" 
+                  [checked]="studentPayment?.school > 0"
+                  [value]="studentPayment?.school">  School </mat-checkbox>
+                <mat-checkbox 
+                  class="checkbox-margin" 
+                  (change)="onBooksChange($event)"
+                  [disabled]="studentPayment?.books > 0" 
+                  [checked]="studentPayment?.books > 0">   Book </mat-checkbox>
+                <mat-checkbox 
+                  class="checkbox-margin" 
+                  (change)="onClothesChange($event)"
+                  [disabled]="studentPayment?.clothes > 0" 
+                  [checked]="studentPayment?.clothes > 0"> Clothes </mat-checkbox>
+                <mat-checkbox 
+                  class="checkbox-margin" 
+                  (change)="onBassChange($event)" 
+                  [disabled]="studentPayment?.bass > 0" 
+                  [checked]="studentPayment?.bass > 0">    bus </mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="form-countiner">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                (click)="onSave()"> add pay</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <hr>
+  
+  <div class="panel-heading">
+    <table matSort class="table">
+      <tr>
+        <th> no </th>
+        <th> name</th>
+        <th> image</th>
+        <th> stage </th>
+        <th> added_at </th>
+        <th> bus </th>
+        <th> books </th>
+        <th> school </th>
+        <th> clothes </th>
+        <th> controls </th>
+      </tr>
+  
+    <tr *ngFor="let payment of payments; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ payment.studentName }}</td>
+      <td>
+        <!-- {{ student.imageUrl ? student.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }} -->
+        <img src="{{ payment.student.imageUrl ? payment.student.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU'}}" alt="{{ payment.studentName }}" style="width: 50px;">
+      </td>
+      <td>{{ payment.studentStage }}</td>
+      <td>{{ payment.added_at | date }}</td>
+      <td>{{ payment.bass }}</td>
+      <td>{{ payment.books }}</td>
+      <td>{{ payment.school }}</td>
+      <td>{{ payment.clothes }}</td>
+      <td>
+        <div class="example-button-row">
+          <button
+            mat-raised-button
+            color="accent"
+            [routerLink]="['/backend/payments/invoice/', payment.student_id, 'info']">details</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+  <mat-paginator
+    [length]="totalData"
+    [pageSize]="dataPerPage"
+    [pageSizeOptions]="dataPageSizeOptions"
+    (page)="onChangedPage($event)">
+  </mat-paginator>
+  
+  </div>
+  
+
+</section>
+
+

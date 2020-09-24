@@ -1,0 +1,159 @@
+<section class="bus-attend background-color">
+  <h1 class="text-center">bus attend</h1>
+  <h4 class="text-center">{{ attendDay }} / {{ attendMonth }} / {{ attendYear }}</h4>
+ 
+  <div class="alert alert-warning" role="alert" *ngIf="isSelectedStudents">
+    no Selected Students to add please select students first
+  </div>
+  
+  <div class="row">
+    <div class="col-md-5">
+
+      <div class="form card" >
+        <div class="spinner-border text-warning m-auto" *ngIf="isBusSpinner">
+          <span class="sr-only" >Loading...</span>
+        </div>
+        <form (ngSubmit)="onSave(busAttendForm)" #busAttendForm="ngForm" *ngIf="!isBusSpinner">
+          <div class="example-container">
+
+            bus <strong class="text-primary">( {{ busInfo.city }} )</strong> 
+            attend <strong class="text-primary">( {{ selection.selected.length }} )</strong> students
+
+            <mat-form-field>
+              <input
+                [ngModel]="busInfo ?.area"
+                matInput
+                required
+                name="area"
+                #area='ngModel'
+                placeholder=" area">
+                <!-- <mat-error *ngIf="busAttendForm.invalid">  area </mat-error> -->
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input
+                [ngModel]="busInfo ?.busNo"
+                matInput
+                required
+                name="busNo"
+                #busNo='ngModel'
+                placeholder=" busNo">
+                <!-- <mat-error *ngIf="busAttendForm.invalid"> busNo </mat-error> -->
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input
+                [ngModel]="busInfo ?.drivar"
+                matInput
+                required
+                name="drivar"
+                #drivar='ngModel'
+                placeholder=" drivar">
+                <!-- <mat-error *ngIf="busAttendForm.invalid">  drivar </mat-error> -->
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input
+                [ngModel]="busInfo ?.supervisor"
+                matInput
+                required
+                name="supervisor"
+                #supervisor='ngModel'
+                placeholder="class supervisor">
+                <!-- <mat-error *ngIf="busAttendForm.invalid"> supervisor </mat-error> -->
+            </mat-form-field>
+            
+            
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="busInfo?.notes"
+                name="notes"
+                rows="6"
+                #input
+                placeholder="add some note"
+                ></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}</mat-hint>
+                <!-- <mat-error *ngIf="classAttendForm.invalid"> please enter notes </mat-error> -->
+            </mat-form-field>
+
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="busAttendForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  {{ selection.selected.length }} students attend</button>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+
+
+      <div class="panel-heading card">
+
+        <div class="spinner-border text-warning m-auto" *ngIf="isBusSpinner">
+          <span class="sr-only" >Loading...</span>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!isBusSpinner">
+    
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element; let i =index"> {{ i + 1 }} </td>
+          </ng-container>
+          
+          <!-- _id Column -->
+          <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let element"> {{ element._id }} </td>
+          </ng-container>
+        
+            
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name.firstname }}  {{ element.name.lastname }} </td>
+          </ng-container>
+        
+           
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              (click)="selection.toggle(row)">
+          </tr>
+        </table>    
+      </div>
+    </div> <!-- End prev calss -->
+  </div>
+
+  <!-- <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p> -->
+
+  <br><br><br>
+
+
+  
+
+</section>

@@ -1,0 +1,40 @@
+.top-menu{
+  .top-menu-info{
+    p{
+      color: #fff;
+      display: inline-block;
+      // background-color: rgb(99, 0, 0);
+    }
+    p:last-child{
+      // background-color: green;
+      margin-left: 25px;
+    }
+  }
+  .bg-light{
+    background-color: transparent !important;
+  }
+  hr{
+    margin: 0;
+    border-top: 1px solid rgb(239, 239, 239);
+  }
+  .navbar{
+    padding: 0;
+    img.logo{
+      width: 79px;
+      position: absolute;
+      top: 2px;
+    }
+    .navbar-nav{
+      padding-top: 8px;
+    }
+  }
+
+  .navbar-light .navbar-nav .nav-link{
+    color: #fff;
+  }
+
+  .active{
+    background-color: green !important;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "navMenu":{  
+    "home": "الرئيسية",
+    "language": "اللغه",
+    "profile": "صفحتى"
+  },
+
+  "sideMenu": {
+    "dashboard":"الرئيسيه",
+    "parents": "الآباء",
+    "addParent":"اضافة ولي امر",
+    "addParent2":" ولي امر",
+    "parent":"ولي امر",
+    "students":"الطلاب",
+    "addStudent":"اضافة طالب",
+    "student":"طالب",
+    "teachers":"المعلمون",
+    "addTeacher":"اضافة معلم",
+    "teacher":"معلم",
+    "addClass":"اضافة فصل",
+    "classes":"الفصول",
+    "library":"المكتبه",
+    "notice":"الاشعارات",
+    "notes": "الملاحظات",
+    "payments": "مدفوعات",
+    "addPayment": "اضافة مدفوعات",
+    "employees": "الموظفين",
+    "addEmployee": "اضافة موظف",
+    "exames": "الامتحانات",
+    "final": "نهاية العام",
+    "monthly": "شهري",
+    "attendes": "الحضور",
+    "buss": "باص",
+    "subjects": "المواد",
+    "textbook": "الكتب الدراسيه",
+    "addbus":"اضافة باص",
+    "allLines": "كل الخطوط",
+    "allAttends": "الحضور",
+    "results":"النتائج"
+  },
+
+  "pages": {
+    "dashboard": "الرئيسيه",
+    "Address": "العنوان",
+    "Email_address": "الايميل",
+    "Mobile": "موبايل",
+    "Bus": "الاتوبيس",
+    "books": "كتب",
+    "school": "المدرسه",
+    "clothes": "الملابس",
+    "New_Users": "مستخدم جديد",
+    "teachers":"المعلمون",
+    "parents": "الآباء",
+    "students":"الطلاب",
+    "employees": "الموظفين",
+
+    "id": "الرقم",
+    "name": "الاسم",
+    "iamage": "الصورة",
+    "childes": "الابناء",
+    "street": "شارع",
+    "city": "مدينة",
+    "ginder": "نوع",
+    "email": "الايميل",
+    "phone": "هاتف",
+    "active": "نشط",
+    "controls": "التحكم",
+    "serchPlaceholder": "البحث باستخدام الايميل.....",
+
+    "f_name": "الاسم الاول اكبر من 3 واصغر من 15 حرف",
+    "f_name2": "الاسم الاول ",
+    "l_name": "الاسم الاخير",
+    "c_date": "اختر تاريح",
+    "s_Country": "اختر بلد",
+    "z_code": " رمز بريدي",
+    "job": "مهنة",
+    "a_note": "اضافة ملحوظة",
+    "a_account": "تفعيل الحساب",
+    "male": "ذكر",
+    "female": "انثي",
+    "a_Image": "اضافة صورة",
+    "p_Info":"بيانات الاب",
+    "Update": "تعديل",
+    "add": "اضافة",
+    "Childs": "الابناء",
+    "QRCOde": "رمز",
+    "Stage": "المرحلة",
+    "level": "السنة",
+    "p_email": "ايميل ولي الامر",
+    "p_pnone": "هاتف ولي الامر",
+    "s_stage": "اختر المرحلة",
+    "s_leve": "اختر السنه",
+    "s_info": "بيانات الطالب",
+    "details": "تفاصيل",
+    "delete": "جذف",
+    "edit": "تعديل"
+
+  },
+
+  "levels": {
+    "all_Stages": "كل المراحل",
+    "preschool": "رياض اطفال",
+    "elementary": "ابتدائي",
+    "middle": "اعدادي",
+    "high": "ثانوي"
+
+  },
+  "errMess": {
+    "f_name": "please enter first name  min 3 max 15",
+    "": ""
+  }
+
+
+  
+}
+

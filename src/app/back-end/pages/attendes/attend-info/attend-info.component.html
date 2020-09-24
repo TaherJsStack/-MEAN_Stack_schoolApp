@@ -1,0 +1,66 @@
+<section class="attend-info background-color"> 
+  <h1 class="text-center">attende</h1>
+
+  <div class="row" style="padding: 20px 0 60px 0;">
+    <div class="col-md-6">
+      <h4 class="text-center"> attend Info</h4>
+      <div class="card">
+        <div style="padding: 20px 0;">
+
+          <h4 class="card">{{ attendInfoData?.tyoe }}</h4>
+
+          <h4 class="card">{{ attendInfoData?.day }}</h4>
+
+          <h4 class="card">{{ attendInfoData?.month }}</h4>
+
+          <h4 class="card" *ngIf="attendInfoData?.data.area">{{ attendInfoData?.data.area }}</h4>
+          <h4 class="card" *ngIf="attendInfoData?.data.busNo">{{ attendInfoData?.data.busNo }}</h4>
+          <h4 class="card" *ngIf="attendInfoData?.data.drivar">{{ attendInfoData?.data.drivar }}</h4>
+          <h4 class="card" *ngIf="attendInfoData?.data.supervisor">{{ attendInfoData?.data.supervisor }}</h4>
+          <h4 class="card" *ngIf="attendInfoData?.data.levelName">{{ attendInfoData?.data.levelName }}</h4>
+          <h4 class="card" *ngIf="attendInfoData?.data.className">{{ attendInfoData?.data.className }}</h4>
+          <h4 class="card">{{ attendInfoData?.data.creator }}</h4>
+          <h4 class="card">{{ attendInfoData?.data.created_at | date }}</h4>
+          <!-- <h4 class="card">{{ attendInfoData?.data._id }}</h4> -->
+          <h4 class="card">{{ attendInfoData?.data.notes }}</h4>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="text-center"> attend students</h4>
+      <div class="card">
+        <table class="table">
+          <caption>List of students ( {{ attendInfoData?.data.students.length }} )</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">className</th>
+              <th scope="col">card Id</th>
+              <th scope="col">controllers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of attendInfoData?.data.students; let i = index">
+              <th scope="row?">{{ i + 1 }}</th>
+              <td>{{ student?.name.firstname }} {{ student?.name.lastname }}</td>
+              <td>{{ student?.cardId }}</td>
+              <td>
+                <div class="controllers-buttons" >
+                  <a title="more Info" [routerLink]="['/backend/students/student/', student.id, 'info']">
+                    <button mat-raised-button>
+                      <i class="fas fa-info"></i>
+                    </button>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- [routerLink]="['/backend/classes/class/', class._id, 'info']" -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</section>

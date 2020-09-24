@@ -1,0 +1,301 @@
+// /* You can add global styles to this file, and also import other style files */
+
+// // arabic fonts
+// @font-face {
+//   font-family: 'HS-Ishraq-Bold';
+//   src: url(assets/fonts/HS-Ishraq-Bold.otf);
+// }
+// @font-face {
+//   font-family: 'HS-Ishraq-Regular';
+//   src: url(assets/fonts/HS-Ishraq-Regular.otf);
+// }
+// @font-face {
+//   font-family: 'HS-Ishraq-Thin';
+//   src: url(assets/fonts/HS-Ishraq-Thin.otf);
+// }
+
+// // english fonts
+// @font-face {
+//   font-family: 'Oswald-Bold';
+//   src: url(assets/fonts/Oswald-Bold.ttf);
+// }
+// @font-face {
+//   font-family: 'Oswald-Regular';
+//   src: url(assets/fonts/Oswald-Regular.ttf);
+// }
+// @font-face {
+//   font-family: 'Oswald-Light';
+//   src: url(assets/fonts/Oswald-Light.ttf);
+// }
+
+// .table td, .table th{
+//   padding-bottom: 0;
+// }
+
+// *[dir="rtl"],
+// *[dir="rtl"] .matStyle.mat-primary{ 
+//   font-family: 'HS-Ishraq-Regular';
+// }
+// *[dir="rtl"] .background-color h1,
+// *[dir="rtl"] h3 {
+//   font-size: 2.75rem;
+//   text-shadow: none;
+// }
+// *[dir="rtl"] small {
+//     font-size: 1rem;
+// }
+// *[dir="rtl"] .table td{
+//   font-family: 'Oswald-Light';
+// }
+// // [dir="rtl"] .textCongregation{ text-align: right; }
+// // [dir="rtl"] .textTitle { text-align: left; }
+// //////////////////////////////////////////////////////////////
+
+// *[dir="ltr"],
+// *[dir="ltr"] .matStyle.mat-primary { 
+//   font-family: 'Oswald-Regular';
+// }
+// *[dir="rtl"] .matStyle.mat-primary{ 
+//   font-family: 'HS-Ishraq-Regular';
+//   background-color: red;
+// }
+// // *[dir="rtl"] .table td{
+// //   font-family: 'HS-Ishraq-Thin';
+// // }
+
+// // students info compnant chart
+// .canvasjs-chart-container{
+//   a{
+//     display: none !important;
+//     visibility: hidden !important;
+//   }
+//   .canvasjs-chart-tooltip{
+//     display: none !important;
+//     visibility: hidden !important;
+//   }
+// }
+
+
+
+// .mat-expansion-panel-header{
+//   font-family: unset;
+// }
+
+// .background-color{
+//   background-color: rgba(29, 97, 143, 0.185);
+//   padding: 15px 40px 60px;
+
+//   h1{
+//     color: #341616;
+//     text-shadow: 1px 2px 0px #0000006b, 
+//                 2px 0px 5px #e2e2e2;
+//   }
+//   .form-countiner {
+//     border-radius: 0.55rem;
+//     background: #fff;
+//     transition: 0.5s;
+//     border: 0;
+//     margin-bottom: 30px;
+//     position: relative;
+//     width: 100%;
+//     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+//     padding: 19px;
+//     width: 85%;
+//     margin: auto;
+//     mat-form-field{
+//       width: 100%;
+//     }
+//   }
+// }
+
+// .panel, 
+// .panel-default{
+
+//   h1{
+//     font-weight: bold;
+//     color: #000
+//   }
+//   .panel-default{
+//     // max-width: 97%;
+//     margin: auto
+//   }
+//   .panel-heading{
+//     padding: 0
+//   }
+//   table tr th{
+//     background-color: #fff;
+//   }
+//    th,
+//    td{
+//     /* background-color: aqua; */
+//     /* width: 24%; */
+//     // text-align: left;
+//     margin: auto;
+//     // width: 5%;
+//   }
+//   th:nth-child(2),
+//   td:nth-child(2){
+//     // background-color: brown;
+//     width: 14%;
+//   }
+//   th:first-child,
+//   td:first-child{
+//     width: 1%;
+//   }  
+//   td p{
+//     height: 20px;
+//     overflow: hidden;
+//   } 
+//   th:last-child,
+//   td:last-child{
+//     width: 13%;
+//     // background-color: brown;
+//     padding: 0;
+//     line-height: 3;
+//   }
+//   //  .mat-raised-button{
+//   //   /* padding: 0;
+//   //   font-size: 5px;
+//   //   min-width: 27px */
+//   // }
+//   td button{
+//     padding: 0px 0px !important;
+//     line-height: 2;
+//     margin-left: 2px;
+//     font-size: 12px;
+//     min-width: 43px !important;
+//   }  
+// }
+
+// .flash-message{
+//   color: #fff;
+//   text-shadow: 10px 10px 10px #f78f1e;
+//   border-radius: 4px;
+//   position: fixed;
+//   top:8%;
+//   right: 0;
+//   min-width: 28%;
+//   transition: all ease-in-out 5s;
+//   z-index: 999;
+// }
+
+// th.mat-header-cell,
+// td.mat-cell{
+//   text-align: center !important;
+//   font-family: "Oswald-Regular";
+// }
+
+// th.mat-header-cell{
+//   color: #000;
+//   font-size: 1.2rem;
+// }
+
+// td.mat-cell{
+//   color: #000;
+//   font-size: .9rem;
+// }
+
+// .mat-tab-body-content, .mat-tab-body-wrapper {
+//   min-height: 240px !important;
+// }
+
+// svg{
+//   width: 100px;
+//   height: 100%;
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (max-width: 576px) { 
+//   .background-color{
+//     padding: 15px 21px 60px;
+//     overflow: scroll;
+//     // background-color: brown;
+//     h1{
+//       font-size: 1.5rem;
+//     }
+//     .card{
+//       width: 263%;
+//     }
+//     .form-control {
+//       display: block;
+//       width: 85%;
+//     }
+//     .panel th, 
+//     .panel-default th{
+//       width: 0%;
+//       padding: 0.3rem;
+//     }
+//     th:last-child,
+//     td:last-child{
+//       background-color: brown;
+//       display: none;
+//    }
+//   }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (max-width: 768px) {
+//   .background-color{
+//     padding: 15px 15px 60px;
+//     h1{
+//       color: #341616;
+//       text-shadow: 1px 2px 0px #0000006b, 
+//                   2px 0px 5px #e2e2e2;
+//     }
+//     .form-countiner {
+//       border-radius: 0.55rem;
+//       background: #fff;
+//       transition: 0.5s;
+//       border: 0;
+//       margin-bottom: 30px;
+//       position: relative;
+//       width: 100%;
+//       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+//       padding: 19px;
+//       width: 85%;
+//       margin: auto;
+//       mat-form-field{
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 1000px) and (max-width: 1200px) {
+//   svg{
+//     width: 70px;
+//     height: 100%;
+//   }
+//   .background-color{
+//     padding: 15px 21px 60px;
+//     overflow: scroll;
+//     h1{
+//       font-size: 2.2rem;
+//     }
+//   }
+//   .table td, .table th {
+//     font-size: 13px;
+//     padding: 0.50rem;
+//     padding: 0.2rem;
+//   }
+//   .panel td button, .panel-default td button {
+//     padding: 0px 0px !important;
+//     margin-left: 2px;
+//     font-size: 9px;
+//     min-width: 32px !important;
+// }
+// }
+
+// // Large devices (desktops, 992px and up)
+// // @media (max-width: 992px) { 
+// //  }
+
+// // Extra large devices (large desktops, 1200px and up)
+// // @media (min-width: 1200px) { ... }
+
+// .spinner{
+//   margin: auto;
+//   position: relative;
+//   left: 0;
+//   right: 0;
+// }

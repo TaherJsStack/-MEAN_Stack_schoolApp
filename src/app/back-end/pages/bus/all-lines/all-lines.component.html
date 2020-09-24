@@ -1,0 +1,61 @@
+<section class="all-lines">
+  <div class="panel panel-default background-color">
+    <h1 class="text-center">all lines</h1> 
+    <div class="row">
+      <div class="col-md-4 offset-md-7">
+          <input #query (keyup)="serchFillter(query.value)" type="text" class="form-control" placeholder="Search by area.....">
+      </div>
+    </div>
+  <br>
+  </div>
+    <!-- Default panel contents -->
+  <div class="panel-heading card">
+            
+    <div *ngIf="isSpinner" class="spinner spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    
+    <table matSort class="table" *ngIf="buses">
+      <tr>
+        <th> id</th>
+        <th> area name</th>
+        <th> city</th>
+        <th> students count</th>
+        <th> bus No </th>
+        <th> drivar </th>
+        <th> supervisor </th>
+        <th> controllers </th>
+      </tr>
+  
+      <tr *ngFor="let bus of buses; let i = index">
+        <td> {{ i + 1}} </td>
+        <td>{{ bus.area }}</td>
+        <td>{{ bus.city }}</td>
+        <td> <p> {{ bus.students.length }} </p> </td>
+        <td>{{ bus.busNo}}</td>
+        <td>{{ bus.drivar }}</td>
+        <td>{{ bus.supervisor }}</td>
+        <td>
+          <i class=""></i>
+          <i class=""></i>
+          <div class="controllers-buttons">
+            <a title="more Info" [routerLink]="['/backend/bus/bus/', bus._id, 'info']">
+              <button mat-raised-button>
+                <i class="fas fa-info"></i>
+              </button>
+            </a>
+      
+            <a title="attend" [routerLink]="['/backend/attendes/bus/', bus._id, 'attend']">
+              <button mat-raised-button>
+                <i class="fas fa-clipboard"></i>
+              </button>
+            </a>
+          </div>
+        </td>
+      
+      </tr>
+    </table>
+  
+  </div>
+  
+</section>

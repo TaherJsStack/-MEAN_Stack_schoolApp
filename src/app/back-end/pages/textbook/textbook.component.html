@@ -1,0 +1,203 @@
+<section class="textbook background-color"> 
+  <h1>Add textbook</h1>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form card">
+        <form (ngSubmit)="onSave(subjectForm)" #subjectForm="ngForm">
+          <div class="example-container">
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="educationStage"
+                #educationStage='ngModel'
+                placeholder="Select stage"
+                (ngModelChange)="stageChange($event)">
+                <mat-option
+                  *ngFor="let stage of stages"
+                  [value]="stage.stageName"
+                  >{{ stage?.stageName }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="subjectForm.invalid"> select stage </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-select   
+                matInput
+                required
+                [ngModel]="class?.level"
+                name="level"
+                #level='ngModel'
+                placeholder="Select level"
+                (ngModelChange)="levelChange($event)">
+                <mat-option 
+                  *ngFor="let level of filteredLevel"
+                  [value]="level?.levelName"
+                  >{{ level?.levelName }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="subjectForm.invalid"> select stage </mat-error>
+            </mat-form-field>
+                      
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="term"
+                #educationStage='ngModel'
+                placeholder="Select term">
+                <mat-option
+                  *ngFor="let term of terms"
+                  [value]="term"
+                  >{{ term }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea
+                matInput
+                required
+                [ngModel]="class?.level"
+                name="notes"
+                #level='ngModel'
+                rows="6"
+                #input
+                placeholder="add some note"
+                ></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}</mat-hint>
+                <!-- <mat-error *ngIf="classAttendForm.invalid"> please enter notes </mat-error> -->
+            </mat-form-field>
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="subjectForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  class textbook</button>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <!-- (ngModelChange)="stageChange($event)" -->
+      <!-- <h1 class="text-center" *ngIf="categories.length <= 0">You Don't Have Any categories please add one</h1> -->
+      <div class="card">
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">index</th>
+              <th scope="col">materials</th>
+              <th scope="col">teacher</th>
+              <th scope="col">action</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor=" let textbook of classTextbooks; let i = index">
+              <td>{{ i + 1 }} </td>
+              <td>{{ textbook?.subjectName }} </td>
+              <td>{{ textbook?.teacherName }}</td>
+              <td>  
+                <button mat-button color="accent" (click)="removeSubjrc(i)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+
+        <form (ngSubmit)="onSaveSubject(AddSubjectForm)" #AddSubjectForm="ngForm" style="width: 85%; margin: auto;">
+          <div class="row">
+            <div class="col-md-5">
+              <mat-form-field>
+                <input
+                  [ngModel]="class?.name"
+                  matInput
+                  required
+                  name="subjectName"
+                  #subjectname='ngModel'
+                  placeholder="textbook Name">
+                  <mat-error *ngIf="AddSubjectForm.invalid"> please enter class name </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-5">
+              <mat-form-field>
+                <mat-select
+                  matInput
+                  [ngModel]="class?.educationStage"
+                  name="teatcherId"
+                  #educationStage='ngModel'
+                  placeholder="Select teatcher">
+                  <mat-option
+                    (click)="teacherClick(teacher)"
+                    *ngFor="let teacher of teachers"
+                    [value]="teacher?._id"
+                    >{{ teacher?.name?.firstname }} {{ teacher?.name.lastname }} </mat-option>
+                </mat-select>
+                <mat-error *ngIf="subjectForm.invalid"> select teatcher </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <br>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="AddSubjectForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  Subject</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br>
+      <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p>
+    </div> <!-- End prev calss -->
+  </div>
+
+  <br><br><br>
+  
+<div class="row">
+          
+  <div *ngIf="isSpinner" class="spinner spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  
+  <div class="col-md-3">
+    preschool
+    <ul class="list-group" *ngFor=" let textbook of textbooks; let i = index">
+      <li class="list-group-item disabled" aria-disabled="true" *ngIf="textbook?.stage === 'preschool'">
+         {{  textbook?.stage }} {{ textbook?.level }} {{ textbook?.term }} <i class="fas fa-check-circle"></i>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    elementary
+    <ul class="list-group" *ngFor=" let textbook of textbooks; let i = index">
+      <li class="list-group-item disabled" aria-disabled="true" *ngIf="textbook?.stage === 'elementary'">
+         {{  textbook?.stage }} {{ textbook?.level }} {{ textbook?.term }}<i class="fas fa-check-circle"></i>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    middle
+    <ul class="list-group" *ngFor=" let textbook of textbooks; let i = index">
+      <li class="list-group-item disabled" aria-disabled="true" *ngIf="textbook?.stage === 'middle'">
+         {{  textbook?.stage }} {{ textbook?.level }} {{ textbook?.term }} <i class="fas fa-check-circle"></i>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    high
+    <ul class="list-group" *ngFor=" let textbook of textbooks; let i = index">
+      <li class="list-group-item disabled" aria-disabled="true" *ngIf="textbook?.stage === 'high'">
+         {{  textbook?.stage }} {{ textbook?.level }} {{ textbook?.term }} <i class="fas fa-check-circle"></i>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</section>

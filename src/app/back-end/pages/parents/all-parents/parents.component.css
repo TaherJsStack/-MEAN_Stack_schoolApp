@@ -1,0 +1,39 @@
+h1 {
+  font-weight: bold;
+  color: gray;
+}
+.panel-default {
+  max-width: 97%;
+  margin: auto;
+}
+.panel-heading {
+  padding: 0;
+}
+table tr th {
+  background-color: #fff;
+}
+.panel-default th,
+.panel-default td {
+  text-align: left;
+  margin: auto;
+  width: 5%;
+}
+.panel-default th:first-child,
+.panel-default td:first-child {
+  width: 1%;
+}
+.panel-default td p {
+  height: 20px;
+  overflow: hidden;
+}
+.panel-default th:last-child,
+.panel-default td:last-child {
+  width: 10%;
+}
+.panel-default td button {
+  padding: 0px 0px !important;
+  line-height: 2;
+  margin-left: 2px;
+  font-size: 12px;
+  min-width: 43px !important;
+}

@@ -1,0 +1,19 @@
+
+<div *ngIf="!isLoggedIn">
+  <router-outlet></router-outlet>
+</div>
+
+
+<div class="row text-center row-no-margin" *ngIf="isLoggedIn" [dir]="textDir">
+  <div class=" col-lg-2 col-md-2 col-no-padding" [ngClass]="{'d-none d-sm-block d-xs-block': isDrawer }">
+    <perfect-scrollbar [style.height.px]="getHeight">
+      <app-side-menu></app-side-menu>
+    </perfect-scrollbar>
+  </div>
+  <div class="col-lg-10 col-md-10 col-no-padding" > <!-- [ngClass]="{'col-sm-12 col-sm-12': !isDrawer, 'col-sm-10 col-sm-10': isDrawer }"-->
+    <app-nav-top></app-nav-top>
+    <perfect-scrollbar [style.height.px]="getHeight">
+      <app-pages></app-pages>
+    </perfect-scrollbar>
+  </div>
+</div>

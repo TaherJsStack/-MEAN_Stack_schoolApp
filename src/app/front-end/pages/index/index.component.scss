@@ -1,0 +1,53 @@
+
+// section{
+//   padding: 50px 0;
+//   background-color: green;
+//   margin-top: 5px;
+//   h4{
+//     background-color: hotpink;
+//   }
+//   p{
+//     background-color: lawngreen;
+//   }
+//   span{
+//     background-color: lightseagreen;
+//   }
+// }
+// .bg-color{
+//   background-color: rgb(240, 240, 240);  
+// }
+
+.slider {
+  .carousel {
+    .carousel-inner {
+      h5 {
+        text-transform: uppercase;
+        position: absolute;
+        top: -300px;
+        text-align: left;
+        font-size: 2rem;
+        span {
+          // background-color: indianred;
+          display: block;
+          color: #f26921;
+        }
+      }
+      p{
+        // background-color: indianred;
+        position: absolute;
+        top: -150px;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+  .carousel-control-next {
+    left: 120px;
+  }
+  .carousel-control-next,
+  .carousel-control-prev {
+    position: absolute;
+    top: 75%;
+  }
+}
+

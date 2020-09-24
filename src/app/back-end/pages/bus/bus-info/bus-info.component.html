@@ -1,0 +1,53 @@
+<section class="bus-info background-color">
+  <h1 class="text-center">bus Info</h1>
+  <h4 class="text-center">{{ busInfo?.area }} </h4>
+  <!-- <span *ngIf="reload"></span> -->
+  <!-- <div class="row"> -->
+
+    <div class="card">
+      <table class="table table-striped" >
+        <caption>
+          
+          <ul>
+            <li><strong>area Name:</strong>{{ busInfo?.area }}</li>
+            <li><strong>city: </strong>{{ busInfo?.city }}</li>
+            <li><strong>busNo: </strong>{{ busInfo?.busNo }}</li>
+            <li><strong>drivar: </strong>{{ busInfo?.drivar }}</li>
+            <li><strong>supervisor: </strong>{{ busInfo?.supervisor }}</li>
+          </ul>
+                
+        </caption>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">student name</th>
+            <th scope="col">ginder</th>
+            <th scope="col">Stage</th>
+            <th scope="col">class Name</th>
+            <th scope="col">parent Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+              <!-- <th  colspan="1">{{ busInfo?.month }}</th>
+              <th  colspan="1">{{ busInfo?.term }}</th>
+              <th  colspan="1">{{ busInfo?.textbook }}</th> -->
+              <!-- <th  colspan="1">{{ exame?.type }}</th> -->
+            </tr>
+            <tr *ngFor="let student of busInfo?.students; let n = index">
+                <td>{{ n + 1 }}</td>
+                <td>{{ student.name.firstname }} {{ student.name.lastname }} </td>
+                <td>{{ student.ginder }} </td>
+                <td>{{ student.educationalStage }} </td>
+                <td>{{ student.className }} </td>
+                <td>0{{ student.parentPhone }} </td>
+            </tr>
+          <!-- [routerLink]="['/backend/classes/class/', class._id, 'info']" -->
+        </tbody>
+      </table>
+    <!-- </div>  -->
+  </div>
+  <!-- <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p> -->
+  <br><br><br>
+
+</section>

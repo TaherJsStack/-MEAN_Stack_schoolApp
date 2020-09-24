@@ -1,0 +1,82 @@
+<section class="invoice background-color">
+
+  <div class="row clearfix">
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card invoice1">                        
+        <div class="body">
+          <div class="invoice-top clearfix">
+            <div class="logo">
+              <img src="assets/image/logo.png" alt="user" class="rounded-circle img-fluid">
+            </div>
+            <div class="info">
+              <h6>ADN international School</h6>
+              <p> t.taher.php@gmail.com <br>
+                  01155721425
+              </p>
+            </div>
+            <div class="title">
+              <h4>Invoice #1069</h4>
+              <p>Issued: {{ date | date }}<br>
+                  Payment Due: June 27, 2018
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="invoice-mid clearfix">
+            <div class="clientlogo">
+              <img src="{{ student?.imageUrl ? student?.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }}" alt="user" class="rounded-circle img-fluid">
+            </div>
+            <div class="student-info">
+              <h6>{{ student?.name.firstname }} {{ student?.name.lastname }}</h6>
+              <p>{{ student?.email }}<br>
+                  {{ student?.phone }}</p>
+              <h6>student</h6>
+              <p>Proin cursus, dui non tincidunt elementum, tortor ex feugiat enim, at elementum enim quam vel purus. Curabitur semper malesuada urna ut suscipit.</p>
+            </div>   
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>buss</th>
+                  <th>books</th>
+                  <th>school</th>
+                  <th>clothes</th>
+                  <th style="width: 80px;">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ payment?._id }}</td>
+                  <td>{{ payment?.bass }} $</td>
+                  <td>{{ payment?.books }} $</td>
+                  <td>{{ payment?.school }} $</td>
+                  <td>{{ payment?.clothes }} $</td>
+                  <td>{{ payment?.bass + payment?.books + payment?.school + payment?.clothes }} $</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr>
+          <div class="row clearfix">
+            <div class="col-md-6">
+              <h5>Note</h5>
+              <p>Etsy doostang weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.</p>
+            </div>
+            <div class="col-md-6 text-right">
+              <h3 class="m-b-0 m-t-10">USD {{ payment?.bass + payment?.books + payment?.school + payment?.clothes }} $</h3>
+            </div>                                    
+            <div class="hidden-print col-md-12 text-right">
+              <hr>
+              <button class="btn btn-outline-secondary"><i class="fas fa-print"></i></button>
+              <button class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</section>

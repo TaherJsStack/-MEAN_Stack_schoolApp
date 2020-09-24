@@ -1,0 +1,153 @@
+<section class="add-book background-color">
+ <!-- Books table -->
+  <div>
+    <h1 class="text-center">Add Book</h1>
+
+
+    <div class="row">
+  
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <div class="card">
+            <div class="body text-center">
+              <div style="
+                    background-color: #4ab7b71f;
+                    margin: 20px;
+                    height: 156px;
+                    line-height: 9;
+                    border-radius: 116px;">
+              <button mat-raised-button>
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#addcontact"><i class="fas fa-plus"></i></a>
+              </button>
+              </div>
+            </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-2 col-md-4 col-sm-6" *ngFor="let book of books">
+        <div class="card">
+            <div class="body text-center">
+              <h5>{{ book.title }}</h5>
+              <!-- <h3>{{ book._id }}</h3> -->
+              <img [src]="book.imageUrl" [alt]="book.title">
+              <h6>{{ book.bookAuth }}</h6>
+              <span>{{ book.subject }}</span>
+            </div>
+            <div class="card-footer">
+              <ul>
+                <li>
+                  <a href="https://www.facebook.com" target="_blank"> 
+                    <button mat-raised-button> <i class="fas fa-book-reader"></i></button>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com" target="_blank"> 
+                    <button mat-raised-button> <i class="fas fa-download"></i></button>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com" target="_blank"> 
+                    <button mat-raised-button> <i class="fas fa-exclamation"></i></button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <mat-paginator
+      [length]="totalData"
+      [pageSize]="dataPerPage"
+      [pageSizeOptions]="dataPageSizeOptions"
+      (page)="onChangedPage($event)">
+    </mat-paginator>
+  
+  </div>
+
+<!-- Add New Book -->
+<div class="modal fade" id="addcontact" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form (ngSubmit)="onSave()" [formGroup]="bookForm">
+        <div class="modal-header">
+          <h6 class="title" id="defaultModalLabel">Add New Book</h6>
+        </div>
+        <div class="modal-body">
+          
+            <div class="row clearfix">
+              <div class="col-12">
+                <div class="form-group">                                   
+                  <input 
+                      [ngModel]="bookForm?.title"
+                      type="text"
+                      formControlName="title"
+                      class="form-control" 
+                      placeholder="book title">
+                  <mat-error *ngIf="bookForm.get('title').invalid"> book title </mat-error>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">                                   
+                  <input 
+                      [ngModel]="bookForm?.bookAuth"
+                      type="text"
+                      formControlName="bookAuth"
+                      class="form-control" 
+                      placeholder="book Auth">
+                  <mat-error *ngIf="bookForm.get('bookAuth').invalid"> book Auth </mat-error>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">                                    
+                  <textarea 
+                      [ngModel]="bookForm?.description"
+                      formControlName="description"
+                      class="form-control" 
+                      placeholder="Description"></textarea>
+                  <mat-hint align="end">{{bookForm.get('description').value?.length || 0}}</mat-hint>
+                  <mat-error *ngIf="bookForm.get('description').invalid"> Description </mat-error>
+                </div>
+              </div>
+              <div class="col-12">
+                <select 
+                      [ngModel]="bookForm?.subject"
+                      formControlName="subject"
+                      class="form-control show-tick m-b-10">
+                  <option>book type</option>
+                  <option 
+                      *ngFor="let d of subjects" 
+                      [value]="d.name">{{d.name}}</option>
+                  <mat-error *ngIf="bookForm.get('subject').invalid"> select subject </mat-error>
+                </select>
+              </div>
+            </div>
+        </div>
+
+        <div class="img-form-field">
+          <button mat-raised-button type="button" mat-button color="accent" (click)="imagPicker.click()"> Add Image </button>
+          <input
+            type="file"
+            #imagPicker
+            (change)="onImagePicked($event)">
+          <div class="img-review">
+            <img src="{{ imgReview }}" [title]="editTeacher?.imageUrl" [alt]="editTeacher?.imageUrl" *ngIf="imgReview !== null && imgReview" />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button 
+              type="button" 
+              class="btn btn-primary"
+              type="submit"
+              (click)="dataDismiss.click()">Add new book</button>
+          <button type="button"  #dataDismiss class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</section>

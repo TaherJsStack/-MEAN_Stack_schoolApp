@@ -1,0 +1,120 @@
+<section class="teacher-info background-color">
+  <h1> {{ teacher.name.firstname }} {{ teacher?.name.lastname }}</h1>
+    <div class="container pageInfo ">
+      <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="body">
+              <div class="row">
+                <div class="">
+                  <div>
+                    <!-- <img src="{{ teacher?.imageUrl }}" [alt]="teacher?.name.firstname" style="width: 100%;"> -->
+                    <img src="{{ teacher?.imageUrl ? teacher.imageUrl : 'assets/image/icons/teacher.jpg' }}" style="width: 100%;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-8 col-md-12">
+
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">name</th>
+                      <th scope="col">phone</th>
+                      <th scope="col">email</th>
+                      <th scope="col">country</th>
+                      <th scope="col">street</th>
+                      <th scope="col">zip</th>
+                      <th scope="col">notes</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{  teacher?.name.firstname }} {{ teacher?.name.lastname }} </td>
+                      <td>{{  teacher?.phone }}</td>
+                      <td>{{ teacher?.email }}</td>
+                      <td>{{ teacher?.address.country }} </td>
+                      <td>{{ teacher?.address.street }} </td>
+                      <td>{{ teacher?.address.zip }} </td>
+                      <td>{{ teacher?.notes }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ginder</th>
+                      <th scope="col">birthdate</th>
+                      <th scope="col">created_at</th>
+                      <th scope="col">active</th>
+                      <th scope="col">workHours</th>
+                      <th scope="col">salary</th>
+                      <th scope="col">subject</th>
+                      <th scope="col">JobType</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ teacher?.ginder }} </td>
+                      <td>{{ teacher?.birthdate | date }}</td>
+                      <td>{{ teacher?.created_at | date }}</td>
+                      <td>{{ teacher?.activeAccount ? 'yes' : 'no' }}</td>
+                      <td>{{ teacher?.workHours }}</td>
+                      <td>{{ teacher?.salary | currency }}</td>
+                      <td>{{ teacher?.subject }}</td>
+                      <td>{{ teacher?.JobType }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">preschool</th>
+                      <th scope="col">elementary</th>
+                      <th scope="col">middle</th>
+                      <th scope="col">high</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td [style.color]="teacher?.educationalStage.preschool === true ? 'green' : 'red'">
+                        {{ teacher?.educationalStage.preschool ? 'preschool' : 'not' }}</td>
+                      <td [style.color]="teacher?.educationalStage.elementary === true ? 'green' : 'red'">
+                        {{ teacher?.educationalStage.elementary ? 'elementary' : 'not' }}</td>
+                      <td [style.color]="teacher?.educationalStage.middle === true ? 'green' : 'red'">
+                        {{ teacher?.educationalStage.middle ? 'middle' : 'not' }}</td>
+                      <td [style.color]="teacher?.educationalStage.high === true ? 'green' : 'red'">
+                        {{ teacher?.educationalStage.high ? 'high' : 'not' }}</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+  </section>
+  

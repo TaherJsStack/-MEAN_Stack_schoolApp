@@ -1,0 +1,99 @@
+<!-- <h1 class="text-center" *ngIf="students?.length > 0 ">You Dont Have Any Students please add one</h1> -->
+<!-- <div class="panel panel-default" *ngIf="parent?.length > 0"> -->
+  <!-- <section class=""></section> -->
+<section class="students background-color">
+  <div class="panel panel-default ">
+    <h1>{{ 'pages.students' | translate }}</h1>
+    <!-- <h1> {{ 'pages.students' | translate }}</h1> -->
+    <div class="row">
+      <div class="col-md-7">
+        <section class="checkbox card">
+          <mat-radio-group >
+            <mat-radio-button 
+              class="checkbox-margin" 
+              [value]="level" 
+              (change)="educationalStageFillter($event)"
+              *ngFor="let level of educationalStage"> {{ 'levels.' + level | translate }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+      <div class="col-md-4">
+        <input #query 
+              type="text" 
+              class="form-control" 
+              (keyup)="searchByEmail(query.value)"             
+              placeholder="{{ 'pages.serchPlaceholder' | translate }}">
+      </div>
+    </div>
+  </div>
+  <br>
+    <!-- Default panel contents -->
+  <div class="panel-heading card">
+  
+    <div *ngIf="isSpinner" class="spinner spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+   
+      <table matSort class="table" *ngIf="students">
+        <tr>
+          <th>{{ 'pages.id' | translate }}</th>
+          <th> creator </th>
+          <th>{{ 'pages.name' | translate }}</th>
+          <th>{{ 'pages.iamage' | translate }}</th>
+          <th>{{ 'pages.QRCOde' | translate }} </th>
+          <th>{{ 'pages.Stage' | translate }} </th>
+          <th>{{ 'pages.level' | translate }} </th>
+          <th>{{ 'pages.ginder' | translate }}</th>
+          <th>{{ 'pages.email' | translate }}</th>
+          <th>{{ 'pages.phone' | translate }}</th>
+          <th>{{ 'pages.active' | translate }}</th>
+          <th>{{ 'pages.controls' | translate }}</th>
+        </tr>
+        <tr *ngFor="let student of students; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ student.creatorName }}</td>
+          <td>{{ student.name.firstname }} {{ student.name.lastname }}</td>
+          <td>
+            <img src="{{ student.imageUrl ? student.imageUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5w5hPPMKYcnbZYaWNKNuu2pj8cgj8s1vzItHD_qeuGK_UuH9&usqp=CAU' }}" style="width: 45px" class="img-responsive" />
+          </td>
+          <td>
+            <img src="{{ student.QRCodePath }}" style="width: 45px" class="img-responsive" />
+          </td>
+          <td>{{ student.educationalStage }} </td>
+          <td>{{ student.level }}</td>
+          <!-- <td>{{ student.address.street}} {{ student.address.city }}</td> -->
+          <td>{{ student.ginder }}</td>
+          <td>{{ student.email}}</td>
+          <td>{{ student.phone }}</td>
+          <td> <span [style.color]="student.activeAccount === true ? 'green' : 'red'">
+              <p>{{ student.activeAccount ? 'Yes' : 'No'}}
+            </span>
+          </td>
+          <td>
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                [routerLink]="['/backend/students/student/', student._id, 'edit']"> {{ 'pages.edit' | translate }}</button>
+              <button mat-raised-button color="warn" (click)="onDelete(student._id , student.name.firstname, student.parentEmail, student.parentPhone)"> {{ 'pages.delete' | translate }}</button>
+              <button
+                mat-raised-button
+                color="accent"
+                [routerLink]="['/backend/students/student/', student._id, 'info']">{{ 'pages.details' | translate }}</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+  
+    <mat-paginator
+      *ngIf="paginator == true"
+      [length]="totalData"
+      [pageSize]="dataPerPage"
+      [pageSizeOptions]="dataPageSizeOptions"
+      (page)="onChangedPage($event)">
+    </mat-paginator>
+  
+  </div>
+  
+</section>

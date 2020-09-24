@@ -1,0 +1,209 @@
+
+<section class="add-teacher background-color">
+  <h1>Add Teacher</h1>
+  <div class="pro-form">
+    <form (ngSubmit)="onSave()" [formGroup]="teacherForm">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <div class="form-countiner">
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.name?.firstname"
+                matInput
+                type="text"
+                formControlName="f_name"
+                placeholder=" first Name">
+                <mat-error *ngIf="teacherForm.get('f_name').invalid"> please enter first name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.name?.lastname"
+                matInput
+                type="text"
+                formControlName="l_name"
+                placeholder=" last Name">
+                <mat-error *ngIf="teacherForm.get('l_name').invalid"> please enter last name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                  matInput 
+                  [matDatepicker]="picker" 
+                  placeholder="Choose a date"
+                  [ngModel]="editTeacher?.birthdate"
+                  formControlName="birthdate"
+                  value="{{ editTeacher?.birthdate | date:'yyyy-MM-dd' }}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="teacherForm.get('birthdate').invalid"> please enter  birthdate </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editTeacher?.address?.country"
+                formControlName="country"
+                placeholder="Select Country">
+                <mat-option
+                  *ngFor="let country of allCountries"
+                  [value]="country.name"
+                  >{{ country.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="teacherForm.get('country').invalid"> please enter country </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editTeacher?.subject"
+                formControlName="subject"
+                placeholder="Select subject">
+                <mat-option
+                  *ngFor="let subject of subjects"
+                  [value]="subject"
+                  >{{ subject }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="teacherForm.get('subject').invalid"> please enter subject </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.address?.city"
+                matInput
+                type="text"
+                formControlName="city"
+                placeholder=" city">
+                <mat-error *ngIf="teacherForm.get('city').invalid"> please enter city </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.address?.street"
+                matInput
+                type="text"
+                formControlName="street"
+                placeholder=" street">
+                <mat-error *ngIf="teacherForm.get('street').invalid"> please enter street </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.salary"
+                matInput
+                type="number"
+                formControlName="salary"
+                placeholder=" salary">
+                <mat-error *ngIf="teacherForm.get('salary').invalid"> please enter salary </mat-error>
+            </mat-form-field>
+
+            <div class="row">
+         
+              <div class=" col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <label class="example-margin">ginder: </label>
+                <mat-radio-group
+                  [ngModel]="editTeacher?.ginder"
+                    matInput
+                    formControlName="ginder"
+                    placeholder=" ginder">
+                  <mat-radio-button class="example-margin" value="male" >  male </mat-radio-button>
+                  <mat-radio-button class="example-margin" value="female"> female </mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-error *ngIf="userGinder.invalid"> please enter Ginder </mat-error> -->
+              </div>
+
+              <div class=" col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <label class="example-margin">Job Type: </label>
+                <mat-radio-group
+                  [ngModel]="editTeacher?.JobType"
+                    matInput
+                    formControlName="JobType"
+                    placeholder=" Job Type">
+                  <mat-radio-button class="example-margin" value="fullTime" >  full Time </mat-radio-button>
+                  <mat-radio-button class="example-margin" value="partTime"> part Time </mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-error *ngIf="userGinder.invalid"> please enter Ginder </mat-error> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <!-- checked="{{ this.editTeacher.educationalStage === stage === true }}"/ -->
+          <div class="form-countiner">
+            <div class="checkbox">
+
+              <mat-checkbox class="checkbox-margin" [ngModelOptions]="{standalone: true}" [(ngModel)]="preschool" [checked]="preschool"> preschool </mat-checkbox>
+
+              <mat-checkbox class="checkbox-margin" [ngModelOptions]="{standalone: true}" [(ngModel)]="elementary">  elementary </mat-checkbox>
+
+              <mat-checkbox class="checkbox-margin" [ngModelOptions]="{standalone: true}" [(ngModel)]="middle"> middle </mat-checkbox>
+
+              <mat-checkbox class="checkbox-margin" [ngModelOptions]="{standalone: true}" [(ngModel)]="high"> high </mat-checkbox>
+
+            </div>
+          </div>
+
+          <div class="form-countiner">
+            
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.email"
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder=" email">
+                <mat-error *ngIf="teacherForm.get('email').invalid"> please enter email </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.phone"
+                matInput
+                type="number"
+                formControlName="phone"
+                placeholder=" phone">
+                <mat-error *ngIf="teacherForm.get('phone').invalid"> please enter phone </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input
+                [ngModel]="editTeacher?.address?.zip"
+                matInput
+                type="number"
+                formControlName="zip"
+                placeholder=" zip">
+                <mat-error *ngIf="teacherForm.get('zip').invalid"> please enter zip code </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="editTeacher?.notes"
+                formControlName="notes"
+                rows="6"
+                placeholder="add some note"
+                ></textarea>
+                <mat-hint align="end">{{teacherForm.get('notes').value?.length || 0}}</mat-hint>
+                <mat-error *ngIf="teacherForm.get('notes').invalid"> please enter notes </mat-error>
+            </mat-form-field>
+            <div class="img-form-field">
+              <button type="button" mat-button color="accent" (click)="imagPicker.click() " > Add Image </button>
+              <input
+                type="file"
+                #imagPicker
+                (change)="onImagePicked($event)">
+              <div class="img-review">
+                <img src="{{ imgReview }}" [title]="editTeacher?.imageUrl" [alt]="editTeacher?.imageUrl" *ngIf="imgReview !== null && imgReview" />
+              </div>
+            </div>
+            <br>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="teacherForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  Parent Info</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

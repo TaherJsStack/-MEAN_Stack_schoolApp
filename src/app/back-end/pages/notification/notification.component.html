@@ -1,0 +1,116 @@
+<section class="notification background-color"> 
+  <!-- <span *ngIf="reload"></span> -->
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form card">
+        <form (ngSubmit)="onSendNotifi(notifiForm)" #notifiForm="ngForm">
+          <div class="example-container">
+
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.name?.lastname"
+                matInput
+                type="text"
+                name="title_ar"
+                placeholder=" enter arabic title">
+                <!-- <mat-error *ngIf="employeeForm.get('l_name').invalid"> please enter last name </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editEmployee?.name?.lastname"
+                matInput
+                type="text"
+                name="title_en"
+                placeholder=" enter english title">
+                <!-- <mat-error *ngIf="employeeForm.get('l_name').invalid"> please enter last name </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="class?.level"
+                name="body_ar"
+                #level='ngModel'
+                rows="6"
+                #input
+                placeholder="noticicatons content in arabic"
+                ></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}</mat-hint>
+                <!-- <mat-error *ngIf="classAttendForm.invalid"> please enter notes </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="class?.level"
+                name="body_en"
+                #level='ngModel'
+                rows="6"
+                #input
+                placeholder="noticicatons content in english"
+                ></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}</mat-hint>
+                <!-- <mat-error *ngIf="classAttendForm.invalid"> please enter notes </mat-error> -->
+            </mat-form-field>
+
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="notifiForm.invalid"> send noticicaton </button>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <!-- (ngModelChange)="stageChange($event)" -->
+      <!-- <h1 class="text-center" *ngIf="categories.length <= 0">You Don't Have Any categories please add one</h1> -->
+      <div class="card">
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">index</th>
+              <th scope="col">check</th>
+              <th scope="col">name</th>
+              <th scope="col">rank</th>
+              <th scope="col">phone</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor=" let user of loggedUsers; let i = index">
+              <td>{{ i + 1 }} </td>
+              <td> 
+                <mat-checkbox 
+                  (click)="checkToNotifi(user.fcmToken, user.userId)" 
+                  
+                  [value]="user.fcmToken"> </mat-checkbox>
+              </td>
+              <td>{{ user?.fullUserData[0].name.firstname }} {{ user?.fullUserData[0].name.lastname }}</td>
+              <td>{{ user?.fullUserData[0].roll }} </td>
+              <td>{{ user?.fullPhoneInfo[0].manufacturer }} / {{ user?.fullPhoneInfo[0].platform }} </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+
+      </div>
+ 
+      <br>
+    </div> <!-- End prev calss -->
+
+  </div>
+
+  <!-- <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p> -->
+
+  <br><br><br>
+
+  
+
+</section>

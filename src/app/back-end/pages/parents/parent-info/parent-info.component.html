@@ -1,0 +1,86 @@
+<section class="parent-info background-color">
+  <h1> {{ 'pages.Childs' | translate }} {{ parent?.childes.length }}</h1>
+    <div class="container pageInfo ">
+      <div class="row clearfix">
+        <div class="col-lg-5 col-md-12">
+          <div class="card">
+            <div class="body">
+              <div class="row">
+                <div class="">
+                  <div>
+                    <img src="{{ parent?.imageUrl ? parent?.imageUrl : 'assets/image/icons/male-p.png'  }}" style="width: 100%;" class="img-responsive" />
+                    <!-- <img *ngIf="!parent?.imageUrl" src="{{ parent?.ginder == 'female' ? 'assets/image/icons/female-p.png' : 'assets/image/icons/male-p.png' }}" style="width: 100%;" class="img-responsive" /> -->
+                  </div>
+                </div>
+               
+              </div>
+             
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-7 col-md-12">
+      
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">name</th>
+                      <th scope="col">phone</th>
+                      <th scope="col">email</th>
+                      <th scope="col">parentCodeId</th>
+                      <th scope="col">job</th>
+                      <th scope="col">notes</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ parent?.name.firstname }} {{ parent?.name.lastname }}  </td>
+                      <td>{{ parent?.phone }}</td>
+                      <td>{{ parent?.email }}</td>
+                      <td>{{ parent?.parentCodeId }} </td>
+                      <td>{{ parent?.job }} </td>
+                      <td>{{ parent?.notes }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+
+      
+      
+      
+          <div class="card" *ngFor="let child of childes">
+            <div class="row">
+              <div class="body display-flex">
+                <div class="imageUrl">
+                  <img [src]="child.imageUrl">
+                  <img *ngIf="child?.imageUrl" src="{{ child?.imageUrl }}" />
+                  <img *ngIf="!child?.imageUrl" src="assets/image/icons/student.png" />
+                </div>
+                <table class="table">
+                    <tr>
+                      <td>{{ child.name.firstname }}</td>
+                      <td>{{ child.level }}</td>
+                      <td>{{ child.educationalStage }}</td>
+                      <td>{{ child.ginder }}</td>
+                      <td>{{ child.email }}</td>
+                      <td>{{ child.phone }}</td>
+                      <td class="fatrash">
+                        <i class="far fa-trash-alt"></i>
+                      </td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+          </div> 
+          
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  

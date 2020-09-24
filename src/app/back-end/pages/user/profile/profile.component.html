@@ -1,0 +1,238 @@
+<section class="background-color">
+  <!-- {{ admin.email }} {{ admin?.auth[0].name.firstname }} -->
+  <h1> {{ admin?.auth[0].name.firstname }} {{ admin?.auth[0].name.lastname }}</h1>
+    <div class="container pageInfo ">
+      <div class="row clearfix">
+        
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+          
+            <div class="body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div>
+                    <img src="{{ admin?.auth[0].imageUrl }}" [alt]="admin?.auth[0].name.firstname" style="width: 100%;">
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <p><i class="fas fa-user"></i>    {{  admin?.name.firstname }} {{ admin?.name.lastname }} </p>
+                  <p><i class="fas fa-phone"></i>   {{  admin?.phone }} </p>
+                  <p><i class="fas fa-envelope"></i> {{ admin?.email }} </p>
+                </div> -->
+              </div>
+              <hr>
+              <ul>
+                <!-- <li> <p>country</p>  <span>{{ admin?.address.country }} </span></li>
+                <li> <p>street</p>   <span>{{ admin?.address.street }} </span></li>
+                <li> <p>zip</p>      <span>{{ admin?.address.zip }} </span></li> -->
+                <li> <p>notes</p>    <span>{{ admin?.auth[0].notes }} </span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-8 col-md-12">
+          
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ginder</th>
+                      <th scope="col">birthdate</th>
+                      <th scope="col">created_at</th>
+                      <th scope="col">active</th>
+                      <th scope="col">country</th>
+                      <th scope="col">street</th>
+                      <th scope="col">zip</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ admin?.auth[0].ginder }} </td>
+                      <td>{{ admin?.auth[0].birthdate | date }}</td>
+                      <td>{{ admin?.auth[0].created_at | date }}</td>
+                      <td>{{ admin?.auth[0].activeAccount ? 'yes' : 'no' }}</td>
+                      <td>{{ admin?.auth[0].address.country }}</td>
+                      <td>{{ admin?.auth[0].address.street }}</td>
+                      <td>{{ admin?.auth[0].address.zip }}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div> 
+          
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ginder</th>
+                      <th scope="col">birthdate</th>
+                      <th scope="col">created_at</th>
+                      <th scope="col">active</th>
+                      <th scope="col">card Id</th>
+                      <th scope="col">level</th>
+                      <th scope="col">Stage</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ admin?.ginder }} </td>
+                      <td>{{ admin?.birthdate | date }}</td>
+                      <td>{{ admin?.created_at | date }}</td>
+                      <td>{{ admin?.activeAccount ? 'yes' : 'no' }}</td>
+                      <td>{{ admin?.cardId }}</td>
+                      <td>{{ admin?.level }}</td>
+                      <td>{{ admin?.educationalStage }}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div> 
+          
+        </div>
+      </div>
+
+      <hr style="border-top: 3px solid rgb(255, 255, 255);
+      color: #fff;
+      background-color: #fff;">
+      <h4 class="text-center">Admins</h4>
+      
+      <div class="row clearfix">
+        
+        <div class="col-md-5">
+          <div class="form card">
+            <h5> Add New Admin</h5>
+            <form (ngSubmit)="onSave(addAuth)" #addAuth="ngForm">
+              <div class="example-container">
+                <div class="alert alert-secondary" role="alert" *ngIf="error">
+                  this is aready admin!
+                  <!-- <br> -->
+                  <!-- {{ error }} -->
+                </div>
+                <mat-form-field>
+                  <mat-select   
+                    matInput
+                    [ngModel]="admin?.level"
+                    name="auth"
+                    #auth='ngModel'
+                    placeholder="Select new auth"
+                    (ngModelChange)="authChange($event)">
+                    <mat-option
+                      *ngFor="let employee of employees"
+                      [value]="employee"
+                      >{{ employee.name.firstname }} {{ employee.name.lastname }}</mat-option>
+                  </mat-select>
+            
+                </mat-form-field>
+    
+                <mat-form-field>
+                  <input
+                    [ngModel]="admin?.name"
+                    matInput
+                    required
+                    name="password"
+                    #catname='ngModel'
+                    placeholder=" password">
+                    <mat-error *ngIf="addAuth.invalid"> please enter password </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    [ngModel]="admin?.confPassword"
+                    matInput
+                    required
+                    name="confPassword"
+                    #catname='ngModel'
+                    placeholder=" confirm password">
+                    <mat-error *ngIf="addAuth.invalid"> please enter confirm password </mat-error>
+                </mat-form-field>
+                <br />
+                <div class="example-button-row">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="addAuth.invalid"> {{ !editMode ? 'add' : 'Update' }}  Auth</button>
+                </div>
+               </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-12">
+          <h6>through admin panel Auth </h6>
+
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">position</th>
+                <th scope="col">email</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let auth of authors; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ auth.auth[0].name.firstname }} {{ auth.auth[0].name.lastname }}</td>
+                <td>{{ auth.roll }}</td>
+                <td>{{ auth.email }}</td>
+                <td>  
+                  <button
+                    mat-raised-button
+                    color="accent">more info</button>
+                    <button
+                    mat-raised-button
+                    color="accent">delete</button> <!--[routerLink]="['/backend/parents/parent/', auth._id, 'info']-->
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <h6>through social Auth logeed</h6>
+          
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">provider</th>
+                <th scope="col">email</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let auth of socialAuth; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ auth.name }}</td>
+                <td>{{ auth.provider }}</td>
+                <td>{{ auth.email }}</td>
+                <td>  
+                  <button
+                    mat-raised-button
+                    color="accent">more info</button>
+                    <button
+                    mat-raised-button
+                    color="accent">delete</button> <!--[routerLink]="['/backend/parents/parent/', auth._id, 'info']-->
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  

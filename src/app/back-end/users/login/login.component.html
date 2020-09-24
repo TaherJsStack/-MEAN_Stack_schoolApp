@@ -1,0 +1,87 @@
+<section class="backend-login">
+  <div class="login">
+    <span class="opacity"></span>
+    <div class="row auth-container">
+      <div class="col col-md-6 col-sm-0 col-sm-6">
+        <div class="auth-form">
+          <ul>
+            <li></li> <li></li> <li></li>
+            <li></li> <li></li> <li></li>
+          </ul>
+          <h4 class="text-center">SignIn</h4>
+          <!-- <p >{{ errMsg }}</p> -->
+          <div class='logo-img'>
+            <img src="assets/image/logo.png" alt="logo">
+          </div>
+      
+          <form (ngSubmit)="onSignin(auth)" #auth="ngForm">
+            <div class="example-container">
+              <p *ngIf="errMsg" [ngClass]="{'text-success': codeMsg=='200', 'text-danger':codeMsg=='500' }">{{ errMsg }}</p>
+              <mat-form-field>
+                <input
+                  ngModel
+                  matInput
+                  required
+                  email
+                  #email="ngModel"
+                  type="email"
+                  name="authEmail"
+                  (blur)="onCheckEmail(email.value)"
+                  placeholder="auth Email => t.taher.mean@gmail.com">
+                  <mat-error *ngIf="email">t.taher.mean@gmail.com</mat-error>
+              </mat-form-field>
+      
+              <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input 
+                  ngModel
+                  matInput
+                  required
+                  #password="ngModel"
+                  type="password"
+                  name="authPassword"
+                  [type]="hide ? 'password' : 'text'"
+                  placeholder="auth Password => 123456">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+  
+              <div class="example-button-row">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="submit"
+                  [disabled]="auth.invalid">Login</button>
+                  or
+                  <button
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  (click)="onSignInWithFB()"> 
+                  <i class="fab fa-facebook-f"></i></button>
+                <br><br>
+                <span
+                  mat-raised-button
+                  routerLink="/backend/forgotPassword"
+                  style="font-size: 12px; margin-left: 36px;"> forgit Password</span>
+              </div>
+              </div>
+          </form>
+      
+        </div>
+      </div>
+      <div class="col col-md-6 col-sm-6 text-center school-info">
+        <div class="school-info-img">
+          <img src="assets/image/logo.png">
+        </div>
+        <h4> arcu. In enim justo,</h4>
+        <span> Nullam dictum</span>
+        <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,</p>
+      </div>
+    </div>
+  
+  </div>
+
+
+</section>

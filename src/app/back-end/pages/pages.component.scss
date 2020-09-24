@@ -1,0 +1,92 @@
+
+.ltr{
+  text-align: left!important;
+  padding-left: 35px;
+}
+.rtl{
+  text-align: right!important;
+}
+
+.block-header{
+  h2{
+    font-size: 13px;
+    text-align: left;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 16px;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: transparent;
+    border-radius: .25rem;
+    font-size: 13px;
+  }
+}
+ 
+.block-header .bh_chart
+{
+  margin-right: 20px;}
+  .m-r-15, .navbar-nav, .new_timeline .header .color-overlay .day-number {
+    margin-right: 15px;
+}
+
+.chat-widget li.left .chat-info 
+{
+  margin-left: 20px;
+}
+
+.block-header .bh_chart {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.block-header .bh_chart small {
+  text-transform: uppercase;
+}
+.small, small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+footer {
+  padding: 20px 0;
+  font-size: 12px;
+  border-top: 1px solid #B9C1CB;
+  // margin-top: 40px;
+  color: #7A868F;
+  text-align: left;
+  // position: fixed;
+  // bottom: 0;
+  // right: 0;
+  // width: 100%;
+  // background-color: #f0f8ff;
+  // position: absolute;
+  //   bottom: 0;
+  .pull-right {
+      float: right!important;
+  }
+  .footer-links a {
+    color: #7A868F;
+    padding: 1px 10px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+
+
+// Small devices (landscape phones, 576px and up)
+// @media (max-width: 576px) { 
+// }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  
+ }
+
+// Large devices (desktops, 992px and up)
+// @media (max-width: 992px) { 
+//  }
+
+// Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { ... }

@@ -1,0 +1,142 @@
+<section class="results background-color">
+  <h1 class="text-center">results</h1>
+
+  <div class="form card">
+
+  <br>
+    <div class="row">
+      <div class="col-md-2"> 
+        <mat-form-field>
+          <mat-select
+            matInput
+            required
+            placeholder="Select stages">
+            <mat-option
+              (click)="onSelectStage(stage.stageName)"
+              [value]="stage.stageName"
+              *ngFor="let stage of stages"
+              >{{ stage.stageName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"> 
+        <mat-form-field>
+          <mat-select
+          matInput
+            required
+            placeholder="Select level">
+            <mat-option
+              (click)="onSelectLevel(level._id, level.levelName)"
+              [value]="level.levelName"
+              *ngFor="let level of leveles"
+              >{{ level.levelName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"> 
+        <!-- <mat-spinner></mat-spinner> -->
+        <div class="spinner-border text-info" role="status"  *ngIf="isClassNameSpinner">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <mat-form-field>
+          <mat-select
+            placeholder="Select class name">
+            <mat-option
+              (click)="onSelectClassname(class.className)"
+              [value]="class.className"
+              *ngFor="let class of classesData"
+              >{{ class.className }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"> 
+        <mat-form-field>
+          <mat-select
+            placeholder="Select term">
+            <mat-option
+              (click)="onSelectTerm(term)"
+              [value]="term"
+              *ngFor="let term of terms"
+              >{{ term }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"> 
+        <mat-form-field>
+          <mat-select
+            placeholder="Select month">
+            <mat-option
+              (click)="onSelectMonth(month)"
+              [value]="month"
+              *ngFor="let month of monthNames"
+              >{{ month }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+       </div>
+      <div class="col-md-2"> 
+        <mat-form-field>
+          <mat-select
+            placeholder="Select textbook">
+            <mat-option
+              (click)="onSelectTextbook(textbook?.subjectName)"
+              [value]="month"
+              *ngFor="let textbook of classTextbooks"
+              >{{ textbook?.subjectName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  <br>
+    
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="mat-elevation-z8">
+
+    <div class="alert alert-warning" role="alert" *ngIf="isWarningAlert">
+      no result please check your selections and try again 
+    </div>
+    
+    <div class="spinner-border text-primary" role="status" *ngIf="isResultspinner">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- id Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> index </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{ 1 + i  }} </td>
+      </ng-container>
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> student Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- degree Column -->
+      <ng-container matColumnDef="degree">
+        <th mat-header-cell *matHeaderCellDef> degree </th>
+        <td mat-cell *matCellDef="let element"> {{element.degree}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+</section>  

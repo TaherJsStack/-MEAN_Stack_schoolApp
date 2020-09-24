@@ -1,0 +1,75 @@
+.pageInfo .card {
+  border-radius: 0.55rem;
+  background: #fff;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.pageInfo .card:hover .body .table tr .fatrash {
+  right: 0px;
+  color: red;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+.pageInfo .card .body {
+  color: #444;
+  padding: 20px;
+  font-weight: 400;
+}
+.pageInfo .card .body ul li {
+  text-align: left;
+}
+.pageInfo .card .body ul li p {
+  display: inline-block;
+  padding-right: 15px;
+}
+.pageInfo .card .body p {
+  text-align: left;
+}
+.pageInfo .card .body .imageUrl {
+  width: 50px;
+}
+.pageInfo .card .body .imageUrl img {
+  width: 100%;
+}
+.pageInfo .card .body .table td,
+.pageInfo .card .body .table th {
+  border-top: 0;
+}
+.pageInfo .card .body .table tr .fatrash {
+  right: -43px;
+  color: red;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+.pageInfo .card .display-flex {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.form {
+  width: 80%;
+  border: 0.5px solid #a2a2a22e;
+  box-shadow: 0px 9px 40px -27px #131313;
+  padding: 30px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+mat-form-field {
+  width: 100%;
+}

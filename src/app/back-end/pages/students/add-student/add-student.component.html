@@ -1,0 +1,208 @@
+<section class="add-student background-color">
+  <h1> {{ !editMode ? add : Update }} {{ 'sideMenu.student' | translate }}</h1>
+
+  <div>
+    <form (ngSubmit)="onSave()" [formGroup]="studentForm">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <div class="form-countiner">
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.name?.firstname"
+                matInput
+                type="text"
+                formControlName="f_name"
+                placeholder="{{ 'pages.f_name2' | translate }}">
+                <mat-error *ngIf="studentForm.get('f_name').invalid"> please enter first name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.name?.lastname"
+                matInput
+                type="text"
+                formControlName="l_name"
+                placeholder="{{'pages.l_name' | translate }}">
+                <mat-error *ngIf="studentForm.get('l_name').invalid"> please enter last name </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                  matInput 
+                  [matDatepicker]="picker" 
+                  placeholder="{{'pages.c_date' | translate }}"
+                  [ngModel]="editStudent?.birthdate"
+                  formControlName="birthdate"
+                  value="{{ editStudent?.birthdate | date:'yyyy-MM-dd' }}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="studentForm.get('birthdate').invalid"> please enter  birthdate </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editStudent?.address?.country"
+                formControlName="country"
+                placeholder="{{'pages.s_Country' | translate }}">
+                <mat-option
+                  *ngFor="let country of allCountries"
+                  value="{{country.name}}"
+                  >{{ country.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="studentForm.get('country').invalid"> please enter address country </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.address?.city"
+                matInput
+                type="text"
+                formControlName="city"
+                placeholder="{{ 'pages.city' | translate }}">
+                <mat-error *ngIf="studentForm.get('city').invalid"> please enter city </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.address?.street"
+                matInput
+                type="text"
+                formControlName="street"
+                placeholder="{{ 'pages.street' | translate }}">
+                <mat-error *ngIf="studentForm.get('street').invalid"> please enter street </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.email"
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="{{ 'pages.email' | translate }}">
+                <mat-error *ngIf="studentForm.get('email').invalid"> please enter email </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editStudent?.educationalStage"
+                (ngModelChange)="stageChange($event)"
+                formControlName="educationalStage"
+                placeholder="{{ 'pages.s_stage' | translate }}">
+                <mat-option *ngFor="let stage of educationalStage" [value]="stage" >{{ stage }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="studentForm.get('educationalStage').invalid"> please enter stage </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                [ngModel]="editStudent?.level"
+                formControlName="level"
+                placeholder="{{ 'pages.s_leve' | translate }}">
+                <mat-option *ngFor="let level of levels" [value]="level">{{ level }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="studentForm.get('level').invalid"> please enter level </mat-error>
+            </mat-form-field>
+            
+            <div class="row">            
+              <!-- <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <mat-slide-toggle
+                [(ngModel)]="activeAccount"
+                [ngModelOptions]="{standalone: true}"
+                (change)="changedStatus($event)">
+                Active Account
+              </mat-slide-toggle>
+              </div> -->
+
+              <div class=" col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <label class="example-margin">{{ 'pages.ginder' | translate }}: </label>
+                <mat-radio-group
+                  [ngModel]="editStudent?.ginder"
+                    matInput
+                    formControlName="ginder">
+                  <mat-radio-button class="example-margin" value="male" >{{ 'pages.male' | translate }}</mat-radio-button>
+                  <mat-radio-button class="example-margin" value="female">{{ 'pages.female' | translate }}</mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-error *ngIf="userGinder.invalid"> please enter Ginder </mat-error> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-countiner">
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.parentEmail"
+                matInput
+                type="email"
+                formControlName="parentEmail"
+                placeholder="{{'pages.p_email' | translate }}">
+                <mat-error *ngIf="studentForm.get('parentEmail').invalid"> please enter parent Email </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.parentPhone"
+                matInput
+                type="number"
+                formControlName="parentPhone"
+                placeholder="{{'pages.p_pnone' | translate }}">
+                <mat-error *ngIf="studentForm.get('parentPhone').invalid"> please enter parent phone </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.phone"
+                matInput
+                type="number"
+                formControlName="phone"
+                placeholder="{{'pages.phone' | translate }}">
+                <mat-error *ngIf="studentForm.get('phone').invalid"> please enter phone </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                [ngModel]="editStudent?.address?.zip"
+                matInput
+                type="number"
+                formControlName="zip"
+                placeholder="{{ 'pages.z_code' | translate }}">
+                <mat-error *ngIf="studentForm.get('zip').invalid"> please enter Postal code </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="editStudent?.notes"
+                formControlName="notes"
+                rows="6"
+                placeholder="{{ 'pages.a_note' | translate }}"
+                ></textarea>
+                <mat-hint align="end">{{studentForm.get('notes').value?.length || 0}}</mat-hint>
+                <mat-error *ngIf="studentForm.get('notes').invalid"> please enter notes </mat-error>
+            </mat-form-field>
+            <div class="img-form-field">
+              <button type="button" mat-button color="accent" (click)="imagPicker.click() " >{{ 'pages.a_Image' | translate }}</button>
+              <input
+                type="file"
+                #imagPicker
+                (change)="onImagePicked($event)">
+              <div class="img-review">
+                <img src="{{ imgReview }}" [title]="editStudent?.imageUrl" [alt]="editStudent?.imageUrl" *ngIf="imgReview !== null && imgReview" />
+              </div>
+            </div>
+            <br>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="studentForm.invalid"> {{ !editMode ? add : Update }}  {{ 'pages.s_info' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

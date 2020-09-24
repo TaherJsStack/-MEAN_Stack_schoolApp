@@ -1,0 +1,198 @@
+<section class="class background-color"> 
+  <h1 class="text-center">Class</h1>
+  
+  <div style="padding: 60px 0;">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="card"> stage - {{ classInfo?.class.stageName }}</h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="card"> level - {{ classInfo?.class.levelName }}</h4>
+      </div>
+      <div class="col-md-4">
+        <h4 class="card"> class name - {{ classInfo?.class.className }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="spinner-border text-warning text-center" *ngIf="isClassSpinner">
+    <span class="sr-only" >Loading...</span>
+  </div>
+
+  <div class="row">    
+
+    <!-- textbooks -->
+    <div class="col-md-6" *ngIf="textbooks?.length > 0">
+      <h4 class="text-center"> class textbooks</h4>
+      <div class="card">
+        <table class="table table-striped" *ngFor="let textbook of textbooks; let i = index">
+          <!-- <caption>List of textbooks ( {{ classInfo?.class.textbooks.length }} )</caption> -->
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">textbook</th>
+              <th scope="col">teacher</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr class="text-center">
+                <th  colspan="3">{{ textbook?.term }}</th>
+              </tr>
+              <tr *ngFor="let textbookTerm of textbook.termTextbooks; let n = index">
+                  <td>{{ n + 1 }}</td>
+                  <td>{{ textbookTerm.subjectName }} </td>
+                  <td>{{ textbookTerm.teacherName }} </td>
+              </tr>
+            <!-- [routerLink]="['/backend/classes/class/', class._id, 'info']" -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- classInfo -->
+    <div class="col-md-6" *ngIf="classInfo?.class.students.length > 0">
+      <h4 class="text-center"> class students</h4>
+      <div class="card">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">className</th>
+            <th scope="col">students count</th>
+            <th scope="col">controllers</th>
+          </tr>
+        </thead>
+      </table>
+        <perfect-scrollbar [style.height.px]="500">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let student of classInfo?.class.students; let i = index">
+                <th scope="row?">{{ i + 1 }}</th>
+                <td>{{ student?.name }}</td>
+                <td>{{ student?.id }}</td>
+                <td>
+                  <div class="controllers-buttons">
+                    <a title="more Info">
+                      <button mat-raised-button
+                      [routerLink]="['/backend/students/student/', student.id, 'info']">
+                        <i class="fas fa-info"></i>
+                      </button>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </perfect-scrollbar>
+      </div>
+    </div>
+
+    <!-- exames -->
+    <div class="col-md-6" *ngIf="exames?.length > 0">
+      <h4 class="text-center"> class exames</h4>
+      <div class="card">
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false"
+                              *ngFor="let exame of exames; let i = index">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ exame._id }}
+              </mat-panel-title>
+              <mat-panel-description class="d-flex justify-content-around">
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false"
+                                   *ngFor="let exameData of exame.data; let i = index">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ exameData.term }}
+                  </mat-panel-title>
+                  <mat-panel-description class="d-flex justify-content-around">
+                    <p class="text-left"> textbook <strong>{{ exameData.textbook }}</strong></p>  <p> full Degree <strong> {{ exameData.fullDegree }}</strong> </p>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">name</th>
+                      <th scope="col">degree</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let student of exameData.degrees; let i = index">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ student.name }}</td> 
+                      <td>{{ student.degree }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </mat-expansion-panel>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+    
+    <!-- attends -->
+    <div class="col-md-6" *ngIf="attends?.length > 0">
+      <h4 class="text-center"> students attends</h4>
+      <div class="card">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState  = false"
+                              *ngFor="let attend of attends">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ attend._id }}
+              </mat-panel-title>
+ 
+            </mat-expansion-panel-header>
+
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false"
+                                   *ngFor="let attendData of attend.data; let i = index">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Self aware panel
+                  </mat-panel-title>
+                  <mat-panel-description class="d-flex justify-content-around">
+                    <p class="text-left"> Day <strong>{{ attendData.day }}</strong></p>  <p> <strong> {{ attendData.student.length }}</strong>  student attended</p>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">name</th>
+                      <th scope="col">id</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let student of attendData.student; let i = index">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ student.name }}</td> 
+                      <td>{{ student.id }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>

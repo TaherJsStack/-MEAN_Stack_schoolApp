@@ -1,0 +1,45 @@
+section {
+  background-color: rgba(51, 1, 1, 0.267);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+section .auth-container {
+  width: 600px;
+  background-color: aqua;
+  margin: auto;
+  position: relative;
+  margin-top: 12%;
+}
+section .auth-form {
+  position: absolute;
+  top: -39px;
+  left: -45px;
+  z-index: 5000;
+  margin: auto;
+  border: 0.5px solid #a2a2a2;
+  background-color: aliceblue;
+  width: 300px;
+  box-shadow: 0px 16px 28px -4px #131313;
+  padding: 30px;
+  border-radius: 50px 0px 50px 0;
+  -webkit-border-radius: 50px 0px 50px 0;
+  -moz-border-radius: 50px 0px 50px 0;
+  -ms-border-radius: 50px 0px 50px 0;
+  -o-border-radius: 50px 0px 50px 0;
+}
+section .auth-form div.logo-img {
+  width: 170px;
+  margin: auto;
+}
+section .auth-form div.logo-img img {
+  width: 100%;
+}
+section .auth-form mat-form-field {
+  width: 100%;
+}
+section .auth-form .mat-option-text {
+  background-color: #415a69 !important;
+}

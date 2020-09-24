@@ -1,0 +1,199 @@
+<section class="student-info background-color">
+  <div class="spinner-border text-warning m-auto" role="status" *ngIf="isStudentSpinner">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <h1> {{ student?.name?.firstname }} {{ student?.name?.lastname }}</h1>
+    <div class="container pageInfo ">
+      <div class="row clearfix">
+
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="body">
+              <div class="row">
+                <div class="">
+                  <div>
+                    <img  src="{{ student?.imageUrl ? student?.imageUrl : 'assets/image/icons/student.png'}}" 
+                          [alt]="student?.name.firstname" style="width: 100%;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="card">
+            <div class="spinner-border text-warning m-auto" role="status" *ngIf="isStudentSpinner">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <h5 class="text-center">student info</h5>
+            <div class="row" *ngIf="!isStudentSpinner">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ginder</th>
+                      <th scope="col">birthdate</th>
+                      <th scope="col">created_at</th>
+                      <th scope="col">active</th>
+                      <th scope="col">card Id</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ student?.ginder }} </td>
+                      <td>{{ student?.birthdate | date }}</td>
+                      <td>{{ student?.created_at | date }}</td>
+                      <td>{{ student?.activeAccount ? 'yes' : 'no' }}</td>
+                      <td>{{ student?.cardId }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="spinner-border text-warning m-auto" role="status" *ngIf="isStudentSpinner">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <h5 class="text-center">contact info</h5>
+            <div class="row" *ngIf="!isStudentSpinner">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">phone</th>
+                      <th scope="col">email</th>
+                      <th scope="col">country</th>
+                      <th scope="col">street</th>
+                      <th scope="col">zip</th>
+                      <th scope="col">notes</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ student?.phone }}</td>
+                      <td>{{ student?.email }}</td>
+                      <td>{{ student?.address.country  }}</td>
+                      <td>{{ student?.address.street }}</td>
+                      <td>{{ student?.address.zip }}</td>
+                      <td>{{ student?.notes }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+ 
+          <div class="card">
+            <div class="spinner-border text-warning m-auto" role="status" *ngIf="isStudentSpinner">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <h5 class="text-center">class info</h5>
+            <div class="row" *ngIf="!isStudentSpinner">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">stage</th>
+                      <th scope="col">level</th>
+                      <th scope="col">class</th>
+                      <th scope="col">students count</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ studentClass?.stageName }} </td>
+                      <td>{{ studentClass?.levelName }}</td>
+                      <td>{{ studentClass?.className }}</td>
+                      <td>{{ studentClass?.students.length }} student</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- chart Container -->
+      <div class="col-md-6">
+        <h3>degree</h3> 
+        <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+
+        <br><br>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false"
+                               *ngFor="let degree of degrees; let i = index">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ i + 1 }}: {{ degree._id }}
+              </mat-panel-title>
+              <mat-panel-description class="d-flex justify-content-around">
+                <p class="text-left"> textbooks full Month Degrees <strong>{{ degree.fullMonthDegrees }}</strong></p>  <p> student total Month Degrees <strong> {{ degree.totalMonthDegrees }}</strong> </p>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-around" *ngFor="let degreeData of degree.data">
+                <p class="text-left"> 
+                  <strong>term: </strong> {{ degreeData.term }}
+                </p>
+                <p class="text-left"> 
+                  <strong>textbook: </strong> {{ degreeData.textbook }}
+                </p>
+                <p> 
+                  <strong> full Degree </strong> {{ degreeData.fullDegree }} 
+                </p>  
+                <p class="text-left"> 
+                  <strong>student degree: </strong> {{ degreeData.degrees.degree }}
+                </p>           
+              </li>
+            </ul>
+            
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <div class="col-md-6">
+        <h3>class attend</h3> 
+        <div id="classAttendChartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+
+        <br><br>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false"
+                               *ngFor="let attend of classAttend; let i = index">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ i + 1 }}: {{ attend._id }}
+              </mat-panel-title>
+              <mat-panel-description class="d-flex justify-content-around">
+                <!-- <p class="text-left"> //// <strong>{{ attend.fullMonthDegrees }}</strong></p>  <p> student total Month Degrees <strong> {{ degree.totalMonthDegrees }}</strong> </p> -->
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-around" *ngFor="let attend of attend.data">
+                <p class="text-left"> 
+                  <strong>month: </strong> {{ attend.month }}
+                </p>
+                <p class="text-left"> 
+                  <strong>day: </strong> {{ attend.day }}
+                </p>
+                
+              </li>
+            </ul>
+            
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+    
+  </section>
+  

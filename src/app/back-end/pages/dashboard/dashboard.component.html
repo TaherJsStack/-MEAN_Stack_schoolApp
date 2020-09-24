@@ -1,0 +1,343 @@
+<section class="dashboard">
+  <div class="background-color">
+
+    <h3 class="text-center animate__animated animate__bounce">{{ 'pages.dashboard' | translate }} </h3>
+    <section class="dash_header">
+      <!-- <div class="container"> -->
+        <div class="row clearfix">
+          
+          <div class="col-lg-4 col-md-12">
+            <div class="card">
+              <!-- <div class="header">
+                <h2>Info</h2>
+              </div> -->
+              <div class="body" style="text-align: end;">
+                <small class="text-muted" [ngClass]="{'rtl': textDir=='ar' }">{{ 'pages.Address' | translate }}: </small>
+                <p [ngClass]="{'rtl': textDir=='ar' }">egypt qena abu-tesht  el-rawateb</p>
+                <div class="have">
+                  <iframe src="https://www.google.com/maps/d/embed?mid=10Dg861xJNy18dTvB6dHk9fp8dRQ&hl=en" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                </div>
+  
+                <div  class="have">
+                  <small class="text-muted" [ngClass]="{'rtl': textDir=='ar' }">{{ 'pages.Email_address' | translate }}: </small>
+                  <p [ngClass]="{'rtl': textDir=='ar' }">t.taher.php@gmail.com</p>
+                  <small class="text-muted" [ngClass]="{'rtl': textDir=='ar' }">{{ 'pages.Mobile' | translate }}: </small>
+                  <p [ngClass]="{'rtl': textDir=='ar' }"> 011-55-72-1425</p>
+                  <p [ngClass]="{'rtl': textDir=='ar' }"> 015-50-31-4558</p>
+                </div>
+  
+                <hr>
+                <div class="row">
+                <small class="text-muted display" [ngClass]="{'rtl': textDir=='ar' }"> Open Social: </small>
+                <br>
+                  <div class="col-md-4">
+                    <!-- <a  href="javascript:void(0);" data-toggle="modal" data-target="#addcontact"> -->
+                    <a target="_blank" href="https://www.facebook.com/?ref=tn_tnmn">
+                      <button mat-raised-button  style="background-color: #3b5998; color: #fff" >
+                        <i class="fab fa-facebook-f m-r-5"></i> facebook
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a target="_blank" href="https://twitter.com/">
+                      <button mat-raised-button style="background-color: rgb(26, 145, 218); color: #fff" >
+                        <i class="fab fa-twitter m-r-5"></i> twitter
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a target="_blank" href="https://www.instagram.com/">
+                      <button mat-raised-button style="background-color: #d42f8c; color: #fff;">
+                        <i class="fab fa-instagram m-r-5"></i> insta
+                      </button>
+                    </a>
+                  </div>
+                  <br>
+                </div>
+                <!-- <p><i class="fab fa-twitter m-r-5"></i> twitter.com/example</p>
+                <p><i class="fab fa-facebook-f  m-r-5"></i> facebook.com/example</p>
+                <p><i class="fab fa-github m-r-5"></i> github.com/example</p>
+                <p><i class="fab fa-instagram m-r-5"></i> instagram.com/example</p> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-8 col-md-12">
+            
+            <div class="card">
+              <div class="row profile_state padding">
+                <div class="col-lg-3 col-6">
+                  <div class="body ">
+                    <i class="fas fa-users"></i>
+                    <h5 class="m-b-0 number count-to" 
+                        data-from="0" 
+                        data-to="2365" 
+                        data-speed="1000" 
+                        data-fresh-interval="700">{{ parents }}</h5>
+                    <small>{{ 'pages.parents' | translate }}</small>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="body">
+                    <i class="fas fa-restroom"></i> 
+                    <h5 class="m-b-0 number count-to" 
+                        data-from="0" 
+                        data-to="1203" 
+                        data-speed="1000" 
+                        data-fresh-interval="700">{{ students }}</h5>
+                    <small>{{ 'pages.students' | translate }}</small>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="body">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h5 class="m-b-0 number count-to" 
+                        data-from="0" 
+                        data-to="324" 
+                        data-speed="1000" 
+                        data-fresh-interval="700">{{ teachers }}</h5>
+                    <small>{{ 'pages.teachers' | translate }}</small>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="body">
+                    <i class="fas fa-user"></i> 
+                    <h5 class="m-b-0 number count-to" 
+                        data-from="0" 
+                        data-to="1980" 
+                        data-speed="1000" 
+                        data-fresh-interval="700">{{employees}}</h5>
+                    <small> {{ 'pages.employees' | translate }} </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row clearfix text-center padding">
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card ">
+  
+                  <div class="spinner-border text-warning" role="status" *ngIf="isProgressSpinner">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  
+                  <div class="body">
+                    <div class="circles">
+                      <circle-progress
+                        [unitsFontSize]="35"
+                        [titleFontSize]="45"
+                        [subtitleFontSize]="21"
+                        [percent]="bussPayValue"
+                        [radius]="75"
+                        [outerStrokeWidth]="7"
+                        [innerStrokeWidth]="0"
+                        [outerStrokeColor]="'#b19f2b'"
+                        [innerStrokeColor]="'#C7E296'"
+                        [animation]="true"
+                        [animationDuration]="300"
+                      ></circle-progress>
+                    </div>
+                    <h6> {{ 'pages.Bus' | translate }}</h6>
+                    <span>of this year</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+  
+                  <div class="spinner-border text-warning" role="status" *ngIf="isProgressSpinner">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  
+                  <div class="body">
+                    <div>
+                      <circle-progress
+                      [unitsFontSize]="35"
+                      [titleFontSize]="45"
+                      [subtitleFontSize]="21"
+                      [percent]="booksPayValue"
+                      [radius]="75"
+                      [outerStrokeWidth]="7"
+                      [innerStrokeWidth]="0"
+                      [outerStrokeColor]="'#b19f2b'"
+                      [innerStrokeColor]="'#C7E296'"
+                      [animation]="true"
+                      [animationDuration]="300"
+                      ></circle-progress>
+                      </div>
+                    <h6>{{ 'pages.books' | translate }}</h6>
+                    <span>of this year</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                  
+                  <div class="spinner-border text-warning" role="status" *ngIf="isProgressSpinner">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  
+                  <div class="body">
+                    <div>
+                      <circle-progress
+                        [unitsFontSize]="35"
+                        [titleFontSize]="45"
+                        [subtitleFontSize]="21"
+                        [percent]="schoolPayValue"
+                        [radius]="75"
+                        [outerStrokeWidth]="7"
+                        [innerStrokeWidth]="0"
+                        [outerStrokeColor]="'#b19f2b'"
+                        [innerStrokeColor]="'#C7E296'"
+                        [animation]="true"
+                        [animationDuration]="300"
+                        ></circle-progress>
+                      </div>
+                    <h6>{{ 'pages.school' | translate }}</h6>
+                    <span> of this year</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                  
+                  <div class="spinner-border text-warning" role="status" *ngIf="isProgressSpinner">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  
+                  <div class="body">
+                    <div>
+                      <circle-progress
+                      [unitsFontSize]="35"
+                      [titleFontSize]="45"
+                      [subtitleFontSize]="21"
+                      [percent]="clothesPayValue"
+                      [radius]="75"
+                      [outerStrokeWidth]="7"
+                      [innerStrokeWidth]="0"
+                      [outerStrokeColor]="'#b19f2b'"
+                      [innerStrokeColor]="'#C7E296'"
+                      [animation]="true"
+                      [animationDuration]="300"
+                      ></circle-progress>  
+                    </div>
+                    <h6>{{ 'pages.clothes' | translate }}</h6>
+                    <span> of this year</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row clearfix text-center">
+  
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="cards clearfix">
+                  <div class="info">
+                    <div class="number">55</div>
+                    <div class="text">{{ 'pages.New_Users' | translate }}</div>
+                  </div>
+                  <div class="icon"> <i class="fa fa-users"></i> </div>
+                </div>
+              </div>
+  
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="cards clearfix">
+                  <div class="info">
+                    <div class="number">55</div>
+                    <div class="text">{{ 'pages.New_Users' | translate }}</div>
+                  </div>
+                  <div class="icon"> <i class="fa fa-users"></i> </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="cards clearfix">
+                  <div class="info">
+                    <div class="number">55</div>
+                    <div class="text">{{ 'pages.New_Users' | translate }}</div>
+                  </div>
+                  <div class="icon"> <i class="fa fa-users"></i> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    </section>
+  
+    <section class="chart">
+      
+      <div class="spinner-border text-success" role="status" *ngIf="isChartSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6">
+          <canvas id="lineChart" ></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="col-md-12">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </section>
+  
+  </div>
+  
+  
+  <!-- Add New Task -->
+  <div class="modal fade" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="title" id="defaultModalLabel">Add New Task</h6>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <div class="col-12">
+                        <div class="form-group">                                    
+                            <input type="text" class="form-control" placeholder="Task no.">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">                                   
+                            <input type="text" class="form-control" placeholder="Job title">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">                                    
+                            <textarea class="form-control" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <select class="form-control show-tick m-b-10">
+                            <option>Select Team</option>
+                            <option>John Smith</option>
+                            <option>Hossein Shams</option>
+                            <option>Maryam Amiri</option>
+                            <option>Tim Hank</option>
+                            <option>Gary Camara</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label>Range</label>
+                        <div class="input-daterange input-group" data-provide="datepicker">
+                            <input type="text" class="form-control" name="start">
+                            <span class="input-group-addon"> to </span>
+                            <input type="text" class="form-control" name="end">
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+</section>

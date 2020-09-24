@@ -1,0 +1,177 @@
+<section class="add-parent background-color">
+  <h1>{{ !editMode ? add : Update }} {{ 'sideMenu.addParent2' | translate }}</h1>
+
+  <div class="pro-form">
+    <form (ngSubmit)="onSaveParent()" [formGroup]="parentForm">
+      <div class="row">
+        
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <div class="form-countiner">
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.name?.firstname"
+                matInput
+                type="text"
+                formControlName="f_name"
+                placeholder="{{'pages.f_name' | translate }}">
+                <mat-error *ngIf="parentForm.get('f_name').invalid">{{'pages.f_name' | translate }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.name?.lastname"
+                matInput
+                type="text"
+                formControlName="l_name"
+                placeholder="{{'pages.l_name' | translate }}">
+                <mat-error *ngIf="parentForm.get('l_name').invalid"> {{'pages.l_name' | translate }} </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                  matInput 
+                  [matDatepicker]="picker" 
+                  placeholder="{{'pages.c_date' | translate }}"
+                  [ngModel]="editParent?.birthdate"
+                  formControlName="birthdate"
+                  value="{{ editParent?.birthdate | date:'yyyy-MM-dd' }}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="parentForm.get('birthdate').invalid"> {{'pages.c_date' | translate }} </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+
+                <mat-select
+                matInput
+                ngDefaultControl
+                [ngModel]="editParent?.address?.country"
+                formControlName="country"
+                placeholder="{{ editParent?.address?.country ? editParent?.address?.country : 'pages.s_Country' | translate }}">
+
+                <mat-option>{{ editParent?.address?.country }}</mat-option>
+                <mat-option
+                  *ngFor="let country of allCountries"
+                  value="{{country.name}}"
+                  >{{ country.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="parentForm.get('country').invalid"> {{'pages.s_Country' | translate }} </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.address?.city"
+                matInput
+                type="text"
+                formControlName="city"
+                placeholder="{{ 'pages.city' | translate }}">
+                <mat-error *ngIf="parentForm.get('city').invalid"> {{ 'pages.city' | translate }} </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.address?.street"
+                matInput
+                type="text"
+                formControlName="street"
+                placeholder="{{ 'pages.street' | translate }}">
+                <mat-error *ngIf="parentForm.get('street').invalid"> {{ 'pages.street' | translate }} </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.email"
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="{{ 'pages.email' | translate }}">
+                <mat-error *ngIf="parentForm.get('email').invalid"> {{ 'pages.email' | translate }} </mat-error>
+                <!-- <mat-error *ngIf="parentForm.get('email').hasError(validation.type) && (accountDetailsForm.get('email').dirty || accountDetailsForm.get('email').touched)">{{validation.message}}</mat-error> -->
+
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.phone"
+                matInput
+                type="text"
+                formControlName="phone"
+                placeholder="{{'pages.phone' | translate }}">
+                <mat-error *ngIf="parentForm.get('phone').invalid || parentForm.get('phone').touched"> please enter phone </mat-error>
+                <!-- <mat-error *ngIf="userDetailsForm.get('fullname').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+
+              </mat-form-field>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <mat-slide-toggle
+                [(ngModel)]="activeAccount"
+                [ngModelOptions]="{standalone: true}"
+                (change)="changedStatus($event)">
+                {{'pages.a_account' | translate }}
+              </mat-slide-toggle>
+              </div> 
+              <div class=" col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <label class="example-margin">{{'pages.ginder' | translate }}: </label>
+                <mat-radio-group
+                  [ngModel]="editParent?.ginder"
+                    matInput
+                    formControlName="ginder"
+                    placeholder="......">
+                  <mat-radio-button class="example-margin" value="male" >{{'pages.male' | translate }}</mat-radio-button>
+                  <mat-radio-button class="example-margin" value="female">{{'pages.female' | translate }} </mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-error *ngIf="userGinder.invalid"> please enter Ginder </mat-error> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-countiner">
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.address?.zip"
+                matInput
+                type="number"
+                formControlName="zip"
+                placeholder="{{'pages.z_code' | translate }}">
+                <mat-error *ngIf="parentForm.get('zip').invalid"> please enter Parent zip </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [ngModel]="editParent?.job"
+                matInput
+                type="text"
+                formControlName="job"
+                placeholder="{{'pages.job' | translate }}">
+                <mat-error *ngIf="parentForm.get('job').invalid"> please enter Parent job </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="editParent?.notes"
+                formControlName="notes"
+                rows="6"
+                placeholder="{{'pages.a_note' | translate }}"
+                ></textarea>
+                <mat-hint align="end">{{parentForm.get('notes').value?.length || 0}}</mat-hint>
+                <mat-error *ngIf="parentForm.get('notes').invalid"> please enter notes </mat-error>
+            </mat-form-field>
+            <div class="img-form-field">
+              <button type="button" mat-button color="accent" (click)="imagPicker.click()">{{'pages.a_Image' | translate }}</button>
+              <input
+                type="file"
+                #imagPicker
+                (change)="onImagePicked($event)">
+              <div class="img-review">
+                <img src="{{ imgReview }}" [title]="editParent?.imageUrl" [alt]="editParent?.imageUrl" *ngIf="imgReview !== null && imgReview" />
+              </div>
+            </div>
+
+            <br>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"> {{ !editMode ? add : Update }}  {{'pages.p_Info' | translate }}</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</section>

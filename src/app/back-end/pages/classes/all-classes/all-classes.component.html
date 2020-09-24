@@ -1,0 +1,64 @@
+<section class="all-classes background-color">
+  <h1 class="text-center">Class rooms</h1>
+  <!-- <h1 *ngIf="stages.length == 0" class="text-center alert alert-danger">No Clsses</h1> -->
+
+  <mat-tab-group  (selectedTabChange)="tabChanged($event)" class="card" >
+
+    <div class="spinner-border text-warning m-auto" *ngIf="isClassSpinner">
+      <span class="sr-only" >Loading...</span>
+    </div>
+
+    <mat-tab [label]="stage.stageName" *ngFor="let stage of stages">
+      <br>
+      <button type="button"
+              (click)="onGetClasses(level._id)"
+              class="btn btn-info ml-5 mt-2" 
+              *ngFor="let level of stage.leveles" >
+              {{ level.levelName }}
+            </button>
+            <br><br>
+      <table class="table" *ngIf="classes">
+        <caption>List of users</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">class Name</th>
+            <th scope="col">students count</th>
+            <th scope="col">controllers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let class of classes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ class.className }}</td>
+            <td>{{ class.students.length }}</td>
+            <td>
+              <div class="controllers-buttons">
+                <a title="more Info" [routerLink]="['/backend/classes/class/', class._id, 'info']">
+                  <button mat-raised-button>
+                    <i class="fas fa-info"></i>
+                  </button>
+                </a>
+                <a title="exams" class="open-right">
+                  <button mat-raised-button>
+                    <i class="fas fa-clipboard"></i>
+                  </button>
+                </a>
+                <a title="attend" [routerLink]="['/backend/attendes/class/', class._id, 'attend']">
+                  <button mat-raised-button>
+                    <i class="fas fa-scroll"></i>
+                  </button>
+                </a>
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+        
+      </table>
+      
+    </mat-tab>
+
+  </mat-tab-group>
+
+</section>

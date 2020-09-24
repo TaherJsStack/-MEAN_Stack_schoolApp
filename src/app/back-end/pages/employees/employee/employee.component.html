@@ -1,0 +1,106 @@
+<section class="employee background-color">
+  <h1> {{ employee?.name.firstname }} {{ employee?.name.lastname }}</h1>
+    <div class="container pageInfo ">
+      <div class="row clearfix">
+        
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+          
+            <div class="body">
+              <div class="row">
+                <div class="">
+                  <div>
+                    <img src="{{ employee?.imageUrl ? employee?.imageUrl : 'assets/image/icons/employee.png' }}" [alt]="employee?.name.firstname" style="width: 100%;">
+                  </div>
+                </div>
+              
+              </div>
+              
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-8 col-md-12">
+          
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">{{ employee?.name.firstname }} {{ employee?.name.lastname }}</th>
+                      <th scope="col">{{ employee?.phone }}</th>
+                      <th scope="col">{{ employee?.email }}</th>
+                      <th scope="col">{{ employee?.address.country }}</th>
+                      <th scope="col">{{ employee?.address.street }}</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ employee?.name.firstname }} {{ employee?.name.lastname }}</td>
+                      <td>{{ employee?.phone }}</td>
+                      <td>{{ employee?.email }}</td>
+                      <td>{{ employee?.address.country }}</td>
+                      <td>{{ employee?.address.street }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>          
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ginder</th>
+                      <th scope="col">birthdate</th>
+                      <th scope="col">created_at</th>
+                      <th scope="col">active</th>
+                      <th scope="col">workHours</th>
+                      <th scope="col">salary</th>
+                      <th scope="col">work</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ employee?.ginder }} </td>
+                      <td>{{ employee?.birthdate | date }}</td>
+                      <td>{{ employee?.created_at | date }}</td>
+                      <td>{{ employee?.activeAccount ? 'yes' : 'no' }}</td>
+                      <td>{{ employee?.workHours }}</td>
+                      <td>{{ employee?.salary | currency }}</td>
+                      <td>{{ employee?.work }}</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+                    
+          <div class="card">
+            <div class="row">
+              <div class="body display-flex">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">notes</th>
+                    </tr>
+                  </thead>
+                  <tbody> 
+                    <tr >
+                      <td>{{ employee?.notes }} </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+  </section>
+  

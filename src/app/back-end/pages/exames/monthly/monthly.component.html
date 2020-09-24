@@ -1,0 +1,181 @@
+<section class="monthly background-color"> 
+<h1 class="text-center">Monthly Exames</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form card">
+        <form (ngSubmit)="onSave(subjectForm)" #subjectForm="ngForm">
+          <div class="example-container">
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="educationStage"
+                #educationStage='ngModel'
+                placeholder="Select stage"
+                (ngModelChange)="stageChange($event)">
+                <mat-option
+                  *ngFor="let stage of stages"
+                  [value]="stage.stageName"
+                  >{{ stage?.stageName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-select   
+                matInput
+                required
+                [ngModel]="class?.level"
+                name="level"
+                #level='ngModel'
+                placeholder="Select level"
+                (ngModelChange)="levelChange($event)">
+                <mat-option
+                  (click)="levelClick(level?._id)"
+                  *ngFor="let level of filteredLevel"
+                  [value]="level?.levelName"
+                  >{{ level?.levelName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+                      
+            <mat-form-field>
+              <mat-select   
+                matInput
+                required
+                [ngModel]="class?.level"
+                name="class"
+                #level='ngModel'
+                placeholder="Select class name">
+                <mat-option
+                  (click)="classClick(class?._id)"
+                  *ngFor="let class of classesData"
+                  [value]="class?.className"
+                  >{{ class?.className }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="term"
+                #educationStage='ngModel'
+                placeholder="Select term">
+                <mat-option
+                  (click)="onTermClick(term)"
+                  *ngFor="let term of terms"
+                  [value]="term"
+                  >{{ term }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="textbook"
+                #textbook='ngModel'
+                placeholder="Select textbook">
+                
+                <mat-option
+                  *ngFor="let subject of classTextbooks"
+                  [value]="subject?.subjectName"
+                  ><b> {{ subject?.subjectName }}</b> {{ subject?.teacherName }} </mat-option>
+              </mat-select>
+              <!-- <p  *ngIf="classTextbooks.length < 0"> you have to add so textbook first </p> -->
+            </mat-form-field>
+            
+            <mat-form-field>
+              <mat-select
+                matInput
+                required
+                [ngModel]="class?.educationStage"
+                name="month"
+                #month='ngModel'
+                placeholder="Select month">
+                <mat-option
+                  *ngFor="let month of monthNames"
+                  [value]="month">{{ month }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea
+                matInput
+                [ngModel]="class?.notes"
+                name="notes"
+                #notes='ngModel'
+                rows="6"
+                #input
+                placeholder="add some note"
+                ></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}</mat-hint>
+                <!-- <mat-error *ngIf="classAttendForm.invalid"> please enter notes </mat-error> -->
+            </mat-form-field>
+            <br />
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="subjectForm.invalid"> {{ !editMode ? 'add' : 'Update' }}  degree</button>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card">
+        <form style="width: 85%; margin: auto;">
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">no</th>
+              <th scope="col">student</th>
+              <th scope="col">id</th>
+              <th scope="col">degree</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor=" let student of classStudents; let i = index">
+              <td>{{ i + 1 }} </td>
+              <td>{{ student?.name }}</td>
+              <td>{{ student?.id}}</td>
+              <td>
+                <input
+                 (blur)="onSaveDegree(i, student?.name, student?.id, degree.value)"
+                  required
+                  matInput
+                  #degree
+                  type="text" 
+                  name="degree"                   
+                  placeholder="add degree"
+                  class="form-control form-control-sm">
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+          <br>
+          <br>
+        </form>
+
+      </div>
+ 
+      <br>
+    </div> <!-- End prev calss -->
+
+  </div>
+
+  <p class="alert alert-danger text-center" *ngIf="studentsMeg">{{studentsMeg}}</p>
+
+  <br><br><br>
+
+  
+
+</section>
